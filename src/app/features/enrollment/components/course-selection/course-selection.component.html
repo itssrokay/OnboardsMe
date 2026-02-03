@@ -1,0 +1,62 @@
+<div class="course-selection-container">
+  <div class="course-selection-card">
+    <h1>Select Your Courses</h1>
+    <p class="subtitle">Choose the courses most relevant to your role and interests</p>
+
+    @if (error()) {
+      <div class="error-message">{{ error() }}</div>
+    }
+
+    @if (loading()) {
+      <div class="loading">Loading courses...</div>
+    } @else {
+      <div class="courses-grid">
+        @for (course of courses(); track course.id) {
+          <div 
+            class="course-card"
+            [class.selected]="isSelected(course.id)"
+            (click)="toggleCourse(course.id)">
+            <div class="course-thumbnail">
+              <img [src]="course.thumbnail" [alt]="course.title" />
+              <div class="selection-indicator">
+                @if (isSelected(course.id)) {
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+                  </svg>
+                }
+              </div>
+            </div>
+            <div class="course-content">
+              <h3>{{ course.title }}</h3>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="meta-item">{{ course.duration }}</span>
+                <span class="meta-item">{{ course.lessons }} lessons</span>
+                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                  {{ course.difficulty }}
+                </span>
+              </div>
+              <div class="course-tags">
+                @for (tag of course.tags; track tag) {
+                  <span class="tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="actions">
+        <button 
+          class="proceed-button"
+          [disabled]="!canProceed()"
+          (click)="proceed()">
+          Continue to Home
+          @if (selectedCourses().size > 0) {
+            <span class="selection-count">({{ selectedCourses().size }} selected)</span>
+          }
+        </button>
+      </div>
+    }
+  </div>
+</div>

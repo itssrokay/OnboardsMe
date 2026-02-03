@@ -1,0 +1,63 @@
+<div class="enrollment-container">
+  <div class="enrollment-card">
+    <h1>Welcome to OnboardsMe</h1>
+    <p class="subtitle">Let's get started with your onboarding journey</p>
+
+    @if (error()) {
+      <div class="error-message">
+        {{ error() }}
+        <br><br>
+        <button class="retry-button" (click)="loadFormConfig()">Retry</button>
+      </div>
+    } @else {
+      @if (formConfig(); as config) {
+        <form [formGroup]="enrollmentForm" (ngSubmit)="onSubmit()" class="enrollment-form">
+          @for (field of config.fields; track field.key) {
+            <div class="form-field">
+              <label [for]="field.key">{{ field.label }}</label>
+              
+              @if (field.type === 'select') {
+                <select 
+                  [id]="field.key" 
+                  [formControlName]="field.key"
+                  class="form-control"
+                  [class.error]="enrollmentForm.get(field.key)?.invalid && enrollmentForm.get(field.key)?.touched">
+                  <option value="" disabled>{{ field.placeholder }}</option>
+                  @for (option of field.options; track option.value) {
+                    <option [value]="option.value">{{ option.label }}</option>
+                  }
+                </select>
+              } @else {
+                <input
+                  [id]="field.key"
+                  [type]="field.type"
+                  [formControlName]="field.key"
+                  [placeholder]="field.placeholder"
+                  class="form-control"
+                  [class.error]="enrollmentForm.get(field.key)?.invalid && enrollmentForm.get(field.key)?.touched"
+                />
+              }
+
+              @if (getFieldError(field.key); as errorMessage) {
+                <span class="error-text">{{ errorMessage }}</span>
+              }
+            </div>
+          }
+
+          <button 
+            type="submit" 
+            class="submit-button"
+            [disabled]="loading() || enrollmentForm.invalid">
+            @if (loading()) {
+              <span>Submitting...</span>
+            } @else {
+              <span>Continue</span>
+            }
+          </button>
+        </form>
+      } @else {
+        <div class="loading">Loading form...</div>
+      }
+    }
+  </div>
+</div>

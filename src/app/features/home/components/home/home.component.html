@@ -1,0 +1,103 @@
+<div class="home-container">
+  <header class="home-header">
+    <h1>{{ getGreeting() }}</h1>
+    <p class="welcome-message">Continue your learning journey</p>
+  </header>
+
+  <div class="sections">
+    @if (continueLearning().length > 0) {
+      <section class="course-section">
+        <h2 class="section-title">Continue Learning</h2>
+        <div class="courses-grid">
+          @for (course of continueLearning(); track course.id) {
+            <div class="course-card" (click)="router.navigate(['/courses', course.id])">
+              <div class="course-thumbnail">
+                <img [src]="course.thumbnail" [alt]="course.title" />
+              </div>
+              <div class="course-content">
+                <h3>{{ course.title }}</h3>
+                <p class="course-description">{{ course.description }}</p>
+                <div class="course-meta">
+                  <span class="meta-item">{{ course.duration }}</span>
+                  <span class="meta-item">{{ course.lessons }} lessons</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    }
+
+    <section class="course-section">
+      <h2 class="section-title">Recently Added</h2>
+      <div class="courses-grid">
+        @for (course of recentlyAdded(); track course.id) {
+          <div class="course-card" (click)="router.navigate(['/courses', course.id])">
+            <div class="course-thumbnail">
+              <img [src]="course.thumbnail" [alt]="course.title" />
+            </div>
+            <div class="course-content">
+              <h3>{{ course.title }}</h3>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="meta-item">{{ course.duration }}</span>
+                <span class="meta-item">{{ course.lessons }} lessons</span>
+                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                  {{ course.difficulty }}
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="course-section">
+      <h2 class="section-title">Popular in Your Role</h2>
+      <div class="courses-grid">
+        @for (course of popularInRole(); track course.id) {
+          <div class="course-card" (click)="router.navigate(['/courses', course.id])">
+            <div class="course-thumbnail">
+              <img [src]="course.thumbnail" [alt]="course.title" />
+            </div>
+            <div class="course-content">
+              <h3>{{ course.title }}</h3>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="meta-item">{{ course.duration }}</span>
+                <span class="meta-item">{{ course.lessons }} lessons</span>
+                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                  {{ course.difficulty }}
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="course-section">
+      <h2 class="section-title">Recommended for You</h2>
+      <div class="courses-grid">
+        @for (course of recommendedForYou(); track course.id) {
+          <div class="course-card" (click)="router.navigate(['/courses', course.id])">
+            <div class="course-thumbnail">
+              <img [src]="course.thumbnail" [alt]="course.title" />
+            </div>
+            <div class="course-content">
+              <h3>{{ course.title }}</h3>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="meta-item">{{ course.duration }}</span>
+                <span class="meta-item">{{ course.lessons }} lessons</span>
+                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                  {{ course.difficulty }}
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</div>

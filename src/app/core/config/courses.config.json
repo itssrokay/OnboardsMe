@@ -1,0 +1,76 @@
+{
+  "courses": [
+    {
+      "id": "angular-fundamentals",
+      "title": "Angular Fundamentals",
+      "description": "Learn the core concepts of Angular framework",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Angular+Fundamentals",
+      "duration": "8 hours",
+      "lessons": 12,
+      "difficulty": "Beginner",
+      "tags": ["Angular", "TypeScript", "Frontend"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-15"
+    },
+    {
+      "id": "product-analysis-basics",
+      "title": "Product Analysis Basics",
+      "description": "Essential skills for product definition and analysis",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Product+Analysis",
+      "duration": "6 hours",
+      "lessons": 10,
+      "difficulty": "Beginner",
+      "tags": ["Product", "Analysis", "Requirements"],
+      "roles": ["Product Definition Analyst (PDA)"],
+      "addedDate": "2024-01-20"
+    },
+    {
+      "id": "advanced-angular",
+      "title": "Advanced Angular Patterns",
+      "description": "Master advanced patterns and best practices in Angular",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Advanced+Angular",
+      "duration": "12 hours",
+      "lessons": 18,
+      "difficulty": "Advanced",
+      "tags": ["Angular", "Architecture", "Best Practices"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-10"
+    },
+    {
+      "id": "user-research-methods",
+      "title": "User Research Methods",
+      "description": "Learn effective user research techniques for product development",
+      "thumbnail": "https://via.placeholder.com/300x200?text=User+Research",
+      "duration": "10 hours",
+      "lessons": 15,
+      "difficulty": "Intermediate",
+      "tags": ["Research", "UX", "Product"],
+      "roles": ["Product Definition Analyst (PDA)"],
+      "addedDate": "2024-01-18"
+    },
+    {
+      "id": "rxjs-mastery",
+      "title": "RxJS Mastery",
+      "description": "Deep dive into reactive programming with RxJS",
+      "thumbnail": "https://via.placeholder.com/300x200?text=RxJS+Mastery",
+      "duration": "15 hours",
+      "lessons": 20,
+      "difficulty": "Advanced",
+      "tags": ["RxJS", "Reactive", "Async"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-05"
+    },
+    {
+      "id": "requirements-engineering",
+      "title": "Requirements Engineering",
+      "description": "Master the art of requirements gathering and documentation",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Requirements",
+      "duration": "9 hours",
+      "lessons": 14,
+      "difficulty": "Intermediate",
+      "tags": ["Requirements", "Documentation", "Analysis"],
+      "roles": ["Product Definition Analyst (PDA)"],
+      "addedDate": "2024-01-22"
+    }
+  ]
+}
