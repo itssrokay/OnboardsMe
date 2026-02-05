@@ -1,0 +1,170 @@
+<div class="course-list-container">
+  <!-- Header -->
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Course Catalog</h1>
+      <p class="subtitle">Explore and learn from our curated courses</p>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input 
+        type="text" 
+        placeholder="Search courses..."
+        [value]="searchQuery()"
+        (input)="onSearchChange($event)"
+      />
+    </div>
+  </header>
+  
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <button 
+      class="filter-tab"
+      [class.active]="activeFilter() === 'all'"
+      (click)="setFilter('all')"
+    >
+      All Courses
+      <span class="count">{{ totalEnrolled() + totalAvailable() }}</span>
+    </button>
+    <button 
+      class="filter-tab"
+      [class.active]="activeFilter() === 'enrolled'"
+      (click)="setFilter('enrolled')"
+    >
+      My Courses
+      <span class="count">{{ totalEnrolled() }}</span>
+    </button>
+    <button 
+      class="filter-tab"
+      [class.active]="activeFilter() === 'available'"
+      (click)="setFilter('available')"
+    >
+      Available
+      <span class="count">{{ totalAvailable() }}</span>
+    </button>
+  </div>
+  
+  <!-- Course Grid -->
+  <div class="courses-grid">
+    @for (course of filteredCourses(); track course.id) {
+      <div 
+        class="course-card"
+        [class.enrolled]="course.isEnrolled"
+        (click)="viewCourse(course.id)"
+      >
+        <!-- Thumbnail -->
+        <div class="card-thumbnail">
+          <img [src]="course.thumbnail" [alt]="course.title" />
+          
+          @if (course.isEnrolled) {
+            <div class="enrolled-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              Enrolled
+            </div>
+          }
+          
+          <!-- Progress bar for enrolled courses -->
+          @if (course.isEnrolled && course.progress > 0) {
+            <div class="progress-overlay">
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="course.progress"></div>
+              </div>
+              <span class="progress-text">{{ course.progress }}% complete</span>
+            </div>
+          }
+        </div>
+        
+        <!-- Card Content -->
+        <div class="card-content">
+          <div class="card-tags">
+            @for (tag of course.tags.slice(0, 3); track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
+          
+          <h3 class="card-title">{{ course.title }}</h3>
+          <p class="card-description">{{ course.description }}</p>
+          
+          <div class="card-meta">
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              {{ course.duration }}
+            </span>
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              {{ getTotalLessons(course) }} lessons
+            </span>
+            <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+              {{ course.difficulty }}
+            </span>
+          </div>
+          
+          <!-- Card Actions -->
+          <div class="card-actions">
+            @if (course.isEnrolled) {
+              <button 
+                class="btn btn-primary"
+                (click)="continueLearning(course.id, $event)"
+              >
+                @if (course.progress > 0) {
+                  Continue Learning
+                } @else {
+                  Start Learning
+                }
+              </button>
+            } @else {
+              <button class="btn btn-secondary">
+                View Course
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        @if (searchQuery()) {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <h3>No courses found</h3>
+          <p>Try adjusting your search or filter criteria</p>
+          <button class="btn btn-secondary" (click)="searchQuery.set(''); setFilter('all')">
+            Clear filters
+          </button>
+        } @else if (activeFilter() === 'enrolled') {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <h3>No enrolled courses yet</h3>
+          <p>Browse available courses and start learning today!</p>
+          <button class="btn btn-primary" (click)="setFilter('available')">
+            Browse Courses
+          </button>
+        } @else {
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <h3>No courses available</h3>
+          <p>Check back later for new courses</p>
+        }
+      </div>
+    }
+  </div>
+</div>

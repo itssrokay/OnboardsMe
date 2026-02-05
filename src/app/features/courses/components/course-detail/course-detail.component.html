@@ -1,0 +1,319 @@
+@if (loading()) {
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Loading course...</p>
+  </div>
+} @else if (error()) {
+  <div class="error-container">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <h2>{{ error() }}</h2>
+    <button class="btn btn-primary" (click)="goBack()">Back to Courses</button>
+  </div>
+} @else if (course()) {
+  <div class="course-detail-container">
+    <!-- Back Button -->
+    <button class="back-button" (click)="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back to Courses
+    </button>
+    
+    <!-- Course Header -->
+    <header class="course-header">
+      <div class="header-content">
+        <div class="course-tags">
+          @for (tag of course()!.tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
+        </div>
+        
+        <h1>{{ course()!.title }}</h1>
+        <p class="course-description">{{ course()!.description }}</p>
+        
+        <!-- Instructor -->
+        @if (course()!.instructor) {
+          <div class="instructor-info">
+            <div class="instructor-avatar">
+              {{ course()!.instructor!.name.charAt(0) }}
+            </div>
+            <div class="instructor-details">
+              <span class="instructor-name">{{ course()!.instructor!.name }}</span>
+              <span class="instructor-title">{{ course()!.instructor!.title }}</span>
+            </div>
+          </div>
+        }
+        
+        <!-- Course Meta -->
+        <div class="course-meta">
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>{{ course()!.duration }}</span>
+          </div>
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            <span>{{ course()!.lessons.length }} Lessons</span>
+          </div>
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span>{{ totalItems() }} Learning Items</span>
+          </div>
+          <div class="meta-item difficulty" [attr.data-difficulty]="course()!.difficulty">
+            {{ course()!.difficulty }}
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="header-actions">
+          @if (isEnrolled()) {
+            <button class="btn btn-primary btn-large" (click)="startLearning()">
+              @if (courseProgress() > 0) {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                Continue Learning
+              } @else {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                Start Learning
+              }
+            </button>
+            
+            <!-- Progress indicator -->
+            <div class="progress-indicator">
+              <div class="progress-circle">
+                <svg viewBox="0 0 36 36">
+                  <path
+                    class="progress-bg"
+                    d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    class="progress-fill"
+                    [style.stroke-dasharray]="courseProgress() + ', 100'"
+                    d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <span class="progress-text">{{ courseProgress() }}%</span>
+              </div>
+              <div class="progress-details">
+                <span class="progress-label">Progress</span>
+                <span class="progress-count">{{ completedItems() }}/{{ totalItems() }} completed</span>
+              </div>
+            </div>
+          } @else {
+            <button class="btn btn-primary btn-large" (click)="enrollInCourse()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                <path d="M12 8v8"/>
+                <path d="M8 12h8"/>
+              </svg>
+              Enroll in Course
+            </button>
+            <p class="enroll-hint">Free enrollment - start learning today!</p>
+          }
+        </div>
+      </div>
+      
+      <div class="header-thumbnail">
+        <img [src]="course()!.thumbnail" [alt]="course()!.title" />
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="course-content">
+      <!-- Left Column - Curriculum -->
+      <div class="curriculum-section">
+        <h2>Course Curriculum</h2>
+        
+        <div class="lessons-list">
+          @for (lesson of course()!.lessons; track lesson.id; let i = $index) {
+            <div class="lesson-card" [class.expanded]="isLessonExpanded(lesson.id)">
+              <!-- Lesson Header -->
+              <div class="lesson-header" (click)="toggleLesson(lesson.id)">
+                <div class="lesson-info">
+                  <span class="lesson-number">{{ i + 1 }}</span>
+                  <div class="lesson-details">
+                    <h3>{{ lesson.title }}</h3>
+                    <div class="lesson-meta">
+                      @if (lesson.estimatedDuration) {
+                        <span>{{ lesson.estimatedDuration }}</span>
+                      }
+                      <span>{{ lesson.learningItems.length }} items</span>
+                      @if (lesson.isFree) {
+                        <span class="free-badge">Free Preview</span>
+                      }
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="lesson-status">
+                  @if (canAccessLesson(lesson)) {
+                    @if (getLessonProgress(lesson.id) === 100) {
+                      <span class="status-badge completed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                      </span>
+                    } @else if (getLessonProgress(lesson.id) > 0) {
+                      <span class="status-badge in-progress">{{ getLessonProgress(lesson.id) }}%</span>
+                    }
+                  } @else {
+                    <span class="status-badge locked">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                      </svg>
+                    </span>
+                  }
+                  
+                  <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Lesson Content (expandable) -->
+              @if (isLessonExpanded(lesson.id)) {
+                <div class="lesson-content">
+                  <p class="lesson-description">{{ lesson.description }}</p>
+                  
+                  <ul class="items-list">
+                    @for (item of lesson.learningItems; track item.id; let j = $index) {
+                      <li 
+                        class="learning-item"
+                        [class.completed]="isItemCompleted(item.id)"
+                        [class.locked]="!canAccessLesson(lesson)"
+                        (click)="canAccessLesson(lesson) && openLearningItem(lesson, item.id)"
+                      >
+                        <div class="item-icon">
+                          @switch (item.type) {
+                            @case ('video') {
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polygon points="10 8 16 12 10 16 10 8"/>
+                              </svg>
+                            }
+                            @case ('pdf') {
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                              </svg>
+                            }
+                            @case ('url') {
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                              </svg>
+                            }
+                          }
+                        </div>
+                        
+                        <div class="item-details">
+                          <span class="item-title">{{ item.title }}</span>
+                          @if (item.description) {
+                            <span class="item-description">{{ item.description }}</span>
+                          }
+                          <span class="item-meta">
+                            @if (item.type === 'video' && item.videoDuration) {
+                              {{ item.videoDuration }}
+                            } @else if (item.estimatedTime) {
+                              {{ formatDuration(item.estimatedTime) }}
+                            }
+                          </span>
+                        </div>
+                        
+                        <div class="item-status">
+                          @if (isItemCompleted(item.id)) {
+                            <svg class="completed-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                          } @else if (!canAccessLesson(lesson)) {
+                            <svg class="locked-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                          }
+                        </div>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+      
+      <!-- Right Column - Overview -->
+      <div class="overview-section">
+        <!-- Learning Outcomes -->
+        @if (course()!.learningOutcomes && course()!.learningOutcomes!.length > 0) {
+          <div class="info-card">
+            <h3>What You'll Learn</h3>
+            <ul class="outcomes-list">
+              @for (outcome of course()!.learningOutcomes; track outcome) {
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {{ outcome }}
+                </li>
+              }
+            </ul>
+          </div>
+        }
+        
+        <!-- Prerequisites -->
+        @if (course()!.prerequisites && course()!.prerequisites!.length > 0) {
+          <div class="info-card">
+            <h3>Prerequisites</h3>
+            <ul class="prerequisites-list">
+              @for (prereq of course()!.prerequisites; track prereq) {
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  {{ prereq }}
+                </li>
+              }
+            </ul>
+          </div>
+        }
+        
+        <!-- Target Roles -->
+        <div class="info-card">
+          <h3>Who This Course Is For</h3>
+          <div class="roles-list">
+            @for (role of course()!.roles; track role) {
+              <span class="role-tag">{{ role }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

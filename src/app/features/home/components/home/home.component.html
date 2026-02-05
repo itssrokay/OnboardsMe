@@ -1,16 +1,152 @@
 <div class="home-container">
   <header class="home-header">
-    <h1>{{ getGreeting() }}</h1>
-    <p class="welcome-message">Continue your learning journey</p>
+    <div class="header-content">
+      <h1>{{ getGreeting() }}</h1>
+      <p class="welcome-message">Continue your learning journey</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="router.navigate(['/courses'])">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        Browse All Courses
+      </button>
+    </div>
   </header>
 
   <div class="sections">
+    <!-- Continue Learning Section -->
     @if (continueLearning().length > 0) {
       <section class="course-section">
-        <h2 class="section-title">Continue Learning</h2>
+        <div class="section-header">
+          <h2 class="section-title">Continue Learning</h2>
+          <a class="view-all" (click)="router.navigate(['/courses'])">View All</a>
+        </div>
         <div class="courses-grid">
           @for (course of continueLearning(); track course.id) {
-            <div class="course-card" (click)="router.navigate(['/courses', course.id])">
+            <div class="course-card enrolled" (click)="viewCourse(course.id)">
+              <div class="course-thumbnail">
+                <img [src]="course.thumbnail" [alt]="course.title" />
+                <!-- Progress overlay -->
+                <div class="progress-overlay">
+                  <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="course.progress"></div>
+                  </div>
+                  <span class="progress-text">{{ course.progress }}% complete</span>
+                </div>
+              </div>
+              <div class="course-content">
+                <h3>{{ course.title }}</h3>
+                <p class="course-description">{{ course.description }}</p>
+                <div class="course-meta">
+                  <span class="meta-item">{{ course.duration }}</span>
+                  <span class="meta-item">{{ getTotalLessons(course) }} lessons</span>
+                </div>
+                <button class="btn-continue" (click)="continueCourse(course.id, $event)">
+                  @if (course.progress > 0) {
+                    Continue
+                  } @else {
+                    Start Learning
+                  }
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    }
+
+    <!-- Recently Added Section -->
+    <section class="course-section">
+      <div class="section-header">
+        <h2 class="section-title">Recently Added</h2>
+        <a class="view-all" (click)="router.navigate(['/courses'])">View All</a>
+      </div>
+      <div class="courses-grid">
+        @for (course of recentlyAdded(); track course.id) {
+          <div 
+            class="course-card" 
+            [class.enrolled]="isEnrolled(course.id)"
+            (click)="viewCourse(course.id)"
+          >
+            <div class="course-thumbnail">
+              <img [src]="course.thumbnail" [alt]="course.title" />
+              @if (isEnrolled(course.id)) {
+                <div class="enrolled-badge">Enrolled</div>
+              }
+              <div class="new-badge">NEW</div>
+            </div>
+            <div class="course-content">
+              <h3>{{ course.title }}</h3>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="meta-item">{{ course.duration }}</span>
+                <span class="meta-item">{{ getTotalLessons(course) }} lessons</span>
+                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                  {{ course.difficulty }}
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Popular in Your Role Section -->
+    <section class="course-section">
+      <div class="section-header">
+        <h2 class="section-title">Popular in Your Role</h2>
+        <a class="view-all" (click)="router.navigate(['/courses'])">View All</a>
+      </div>
+      <div class="courses-grid">
+        @for (course of popularInRole(); track course.id) {
+          <div 
+            class="course-card"
+            [class.enrolled]="isEnrolled(course.id)"
+            (click)="viewCourse(course.id)"
+          >
+            <div class="course-thumbnail">
+              <img [src]="course.thumbnail" [alt]="course.title" />
+              @if (isEnrolled(course.id)) {
+                <div class="enrolled-badge">Enrolled</div>
+                <div class="progress-overlay">
+                  <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="getCourseProgress(course.id)"></div>
+                  </div>
+                  <span class="progress-text">{{ getCourseProgress(course.id) }}% complete</span>
+                </div>
+              }
+            </div>
+            <div class="course-content">
+              <h3>{{ course.title }}</h3>
+              <p class="course-description">{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="meta-item">{{ course.duration }}</span>
+                <span class="meta-item">{{ getTotalLessons(course) }} lessons</span>
+                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                  {{ course.difficulty }}
+                </span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Recommended for You Section -->
+    @if (recommendedForYou().length > 0) {
+      <section class="course-section">
+        <div class="section-header">
+          <h2 class="section-title">Recommended for You</h2>
+          <a class="view-all" (click)="router.navigate(['/courses'])">View All</a>
+        </div>
+        <div class="courses-grid">
+          @for (course of recommendedForYou(); track course.id) {
+            <div class="course-card" (click)="viewCourse(course.id)">
               <div class="course-thumbnail">
                 <img [src]="course.thumbnail" [alt]="course.title" />
               </div>
@@ -19,7 +155,10 @@
                 <p class="course-description">{{ course.description }}</p>
                 <div class="course-meta">
                   <span class="meta-item">{{ course.duration }}</span>
-                  <span class="meta-item">{{ course.lessons }} lessons</span>
+                  <span class="meta-item">{{ getTotalLessons(course) }} lessons</span>
+                  <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
+                    {{ course.difficulty }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -27,77 +166,5 @@
         </div>
       </section>
     }
-
-    <section class="course-section">
-      <h2 class="section-title">Recently Added</h2>
-      <div class="courses-grid">
-        @for (course of recentlyAdded(); track course.id) {
-          <div class="course-card" (click)="router.navigate(['/courses', course.id])">
-            <div class="course-thumbnail">
-              <img [src]="course.thumbnail" [alt]="course.title" />
-            </div>
-            <div class="course-content">
-              <h3>{{ course.title }}</h3>
-              <p class="course-description">{{ course.description }}</p>
-              <div class="course-meta">
-                <span class="meta-item">{{ course.duration }}</span>
-                <span class="meta-item">{{ course.lessons }} lessons</span>
-                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
-                  {{ course.difficulty }}
-                </span>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    </section>
-
-    <section class="course-section">
-      <h2 class="section-title">Popular in Your Role</h2>
-      <div class="courses-grid">
-        @for (course of popularInRole(); track course.id) {
-          <div class="course-card" (click)="router.navigate(['/courses', course.id])">
-            <div class="course-thumbnail">
-              <img [src]="course.thumbnail" [alt]="course.title" />
-            </div>
-            <div class="course-content">
-              <h3>{{ course.title }}</h3>
-              <p class="course-description">{{ course.description }}</p>
-              <div class="course-meta">
-                <span class="meta-item">{{ course.duration }}</span>
-                <span class="meta-item">{{ course.lessons }} lessons</span>
-                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
-                  {{ course.difficulty }}
-                </span>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    </section>
-
-    <section class="course-section">
-      <h2 class="section-title">Recommended for You</h2>
-      <div class="courses-grid">
-        @for (course of recommendedForYou(); track course.id) {
-          <div class="course-card" (click)="router.navigate(['/courses', course.id])">
-            <div class="course-thumbnail">
-              <img [src]="course.thumbnail" [alt]="course.title" />
-            </div>
-            <div class="course-content">
-              <h3>{{ course.title }}</h3>
-              <p class="course-description">{{ course.description }}</p>
-              <div class="course-meta">
-                <span class="meta-item">{{ course.duration }}</span>
-                <span class="meta-item">{{ course.lessons }} lessons</span>
-                <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
-                  {{ course.difficulty }}
-                </span>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    </section>
   </div>
 </div>

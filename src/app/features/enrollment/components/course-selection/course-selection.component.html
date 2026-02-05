@@ -31,7 +31,7 @@
               <p class="course-description">{{ course.description }}</p>
               <div class="course-meta">
                 <span class="meta-item">{{ course.duration }}</span>
-                <span class="meta-item">{{ course.lessons }} lessons</span>
+                <span class="meta-item">{{ getTotalLessons(course) }} lessons</span>
                 <span class="meta-item difficulty" [attr.data-difficulty]="course.difficulty">
                   {{ course.difficulty }}
                 </span>

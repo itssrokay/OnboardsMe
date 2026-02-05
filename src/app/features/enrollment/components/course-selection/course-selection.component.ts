@@ -1,21 +1,9 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EnrollmentService } from '../../../../core/services/enrollment.service';
-import { StorageService } from '../../../../core/services/storage.service';
-
-interface Course {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  duration: string;
-  lessons: number;
-  difficulty: string;
-  tags: string[];
-  roles: string[];
-  addedDate: string;
-}
+import { CourseService } from '../../../../core/services/course.service';
+import { Course } from '../../../../core/models/course.model';
 
 @Component({
   selector: 'app-course-selection',
@@ -27,40 +15,27 @@ interface Course {
 export class CourseSelectionComponent implements OnInit {
   private router = inject(Router);
   private enrollmentService = inject(EnrollmentService);
-  private storageService = inject(StorageService);
+  private courseService = inject(CourseService);
 
-  courses = signal<Course[]>([]);
   selectedCourses = signal<Set<string>>(new Set());
-  loading = signal(true);
-  error = signal<string | null>(null);
+  loading = computed(() => this.courseService.loading());
+  error = computed(() => this.courseService.error());
+  
+  // Get courses relevant to user's role
+  courses = computed(() => {
+    const enrollment = this.enrollmentService.getEnrollmentData();
+    if (!enrollment) return [];
+    
+    return this.courseService.courses().filter(course => 
+      course.roles.includes(enrollment.role)
+    );
+  });
 
   ngOnInit(): void {
     const enrollment = this.enrollmentService.getEnrollmentData();
     if (!enrollment) {
       this.router.navigate(['/enroll']);
       return;
-    }
-
-    this.loadCourses();
-  }
-
-  private async loadCourses(): Promise<void> {
-    try {
-      const response = await fetch('/assets/config/courses.config.json');
-      const data = await response.json();
-      
-      const enrollment = this.enrollmentService.getEnrollmentData();
-      const relevantCourses = data.courses.filter((course: Course) => 
-        course.roles.includes(enrollment?.role || '')
-      );
-      
-      this.courses.set(relevantCourses);
-      this.storageService.saveCourses(data.courses);
-    } catch (err) {
-      console.error('Failed to load courses:', err);
-      this.error.set('Failed to load courses');
-    } finally {
-      this.loading.set(false);
     }
   }
 
@@ -80,6 +55,10 @@ export class CourseSelectionComponent implements OnInit {
 
   canProceed(): boolean {
     return this.selectedCourses().size > 0;
+  }
+  
+  getTotalLessons(course: Course): number {
+    return course.lessons?.length || 0;
   }
 
   proceed(): void {
