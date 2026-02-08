@@ -168,14 +168,19 @@
   top: calc(100% + 0.5rem);
   right: 0;
   width: 320px;
+  max-width: 90vw; // Prevent overflow on small screens
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   animation: dropdown-appear 0.2s ease;
+  overflow: hidden;
+  box-sizing: border-box;
 
   .dropdown-section {
     padding: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
 
     .section-header {
       display: flex;
@@ -219,54 +224,65 @@
         margin: 0 0 0.75rem 0;
         line-height: 1.4;
       }
+    }
+  }
 
-      .user-info-section {
-        .user-details {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
+  // User Info Section - moved outside section-content
+  .user-info-section {
+    .user-details {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
 
-          .user-avatar-large {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-          }
+      .user-avatar-large {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1.25rem;
+        flex-shrink: 0;
+      }
 
-          .user-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
+      .user-text {
+        flex: 1;
+        min-width: 0;
 
-            .user-name-large {
-              font-size: 1rem;
-              font-weight: 600;
-              color: #1a202c;
-            }
+        .user-name-large {
+          display: block !important;
+          font-size: 1rem;
+          font-weight: 600;
+          color: #1a202c;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          line-height: 1.4;
+          margin-bottom: 0.5rem;
+        }
 
-            .user-role-badge {
-              display: inline-block;
-              padding: 0.25rem 0.75rem;
-              background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-              color: #667eea;
-              border-radius: 12px;
-              font-size: 0.75rem;
-              font-weight: 600;
-              width: fit-content;
-            }
+        .user-role-badge {
+          display: block !important;
+          padding: 0.25rem 0.75rem;
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+          color: #667eea;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          width: fit-content;
+          max-width: 100%;
+          word-wrap: break-word;
+          margin-bottom: 0.5rem;
+        }
 
-            .user-email {
-              font-size: 0.75rem;
-              color: #718096;
-            }
-          }
+        .user-email {
+          display: block !important;
+          font-size: 0.75rem;
+          color: #718096;
+          word-break: break-all;
+          line-height: 1.4;
         }
       }
     }
