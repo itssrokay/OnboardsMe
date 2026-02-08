@@ -32,21 +32,29 @@ The platform adapts to your role (Developer or Product Analyst) and suggests cou
 - See your learning journey on a timeline
 - Access onboarding resources (welcome videos, manager info, mentor contacts)
 
-**Live Demo:** [https://itssrokay.github.io/OnboardsMe/](https://itssrokay.github.io/OnboardsMe/)
+
 
 ## Architecture Decisions
 
-### Why TypeScript Everywhere
+### Configuration-Driven with TypeScript Safety
 
-Using TypeScript interfaces for everything (courses, quizzes, user data) gives us:
-- **VS Code intelligence** - autocomplete knows exactly what fields exist
-- **Instant error detection** - typos get caught while typing, not at runtime
-- **Type safety** - can't accidentally pass a string where a number is expected
-- **Better refactoring** - rename a property once, VS Code updates it everywhere
+We store all content (courses, quizzes, form fields) in JSON files, but define TypeScript interfaces to ensure type safety:
 
-Example interfaces:
+**JSON for flexibility:**
+- Content editors can add courses/quizzes without touching code
+- Easy to update questions, add lessons, change form fields
+- All config lives in `src/assets/config/*.json`
+
+**TypeScript for safety:**
+- Interfaces define the exact structure JSON must follow
+- VS Code shows errors instantly if JSON doesn't match the interface
+- Autocomplete works when accessing course/quiz properties
+- Can't accidentally misspell a property name
+
+Example - Course interface with sample JSON:
 
 ```typescript
+// TypeScript Interface (src/app/core/models/course.model.ts)
 interface Course {
   id: string;
   title: string;
@@ -54,24 +62,44 @@ interface Course {
   roles: ('Developer' | 'Product Definition Analyst (PDA)')[];
   category: 'Angular' | 'Java' | 'Python' | 'Computer Fundamentals';
   minExperience?: number;
+  thumbnail: string;
   lessons: Lesson[];
 }
+```
 
-interface Quiz {
-  id: string;
-  courseId: string;
-  passingScore: number;
-  questions: QuizQuestion[];
-}
-
-interface EnrollmentData {
-  name: string;
-  email: string;
-  role: 'Developer' | 'Product Definition Analyst (PDA)';
-  yearsOfExperience: number;
-  enrolledCourses: string[];
+```json
+// Actual JSON Configuration (src/assets/config/courses.config.json)
+{
+  "courses": [
+    {
+      "id": "angular-fundamentals",
+      "title": "Angular Fundamentals",
+      "difficulty": "Beginner",
+      "roles": ["Developer"],
+      "category": "Angular",
+      "minExperience": 0,
+      "maxExperience": 2,
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Introduction to Angular",
+          "learningItems": [
+            {
+              "id": "item-1",
+              "type": "video",
+              "title": "What is Angular?",
+              "content": "https://www.youtube.com/watch?v=..."
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
+
+When the app loads JSON, TypeScript ensures it matches the interface. If someone adds a typo in the JSON or forgets a required field, VS Code flags it immediately.
 
 ### Standalone Components
 
@@ -95,13 +123,6 @@ userCourses = computed(() => {
   return this.courses().filter(c => c.roles.includes(role));
 });
 ```
-
-### Configuration-Driven UI
-
-Forms, courses, and quizzes are defined in JSON files under `src/assets/config/`. This means:
-- No code changes needed to add new courses or questions
-- Content editors can update JSON without touching TypeScript
-- Easy to test with different configurations
 
 ### Feature-Based Folders
 
@@ -149,12 +170,6 @@ Home page shows 3 courses per section by default, expandable to show all. Keeps 
 - **12 courses** across 4 technology categories
 - **60 quiz questions** with explanations
 - **7 feature modules** with lazy loading
-- **~315KB** initial bundle (87KB gzipped)
 
-## Why No Backend?
 
-Everything runs client-side with localStorage. This keeps the project simple for demonstration purposes. In production, you'd swap `StorageService` for an HTTP service hitting a real API - the rest of the code stays the same.
 
-## Browser Support
-
-Works on any modern browser. Tested on Chrome, Firefox, Safari, and Edge.
