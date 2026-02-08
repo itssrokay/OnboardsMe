@@ -287,6 +287,45 @@
   }
 }
 
+// See More Button
+.see-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.see-more-btn {
+  padding: 0.875rem 2rem;
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .home-container {
     padding: 1rem;
@@ -317,5 +356,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .see-more-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

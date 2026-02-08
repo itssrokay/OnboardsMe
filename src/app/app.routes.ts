@@ -41,6 +41,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/timeline/components/timeline/timeline.component').then(m => m.TimelineComponent),
     canActivate: [enrollmentGuard]
   },
+  // Onboarding route
+  {
+    path: 'onboarding',
+    loadComponent: () => import('./features/onboarding/components/onboarding-welcome/onboarding-welcome.component').then(m => m.OnboardingWelcomeComponent),
+    canActivate: [enrollmentGuard]
+  },
   // Course routes
   {
     path: 'courses',

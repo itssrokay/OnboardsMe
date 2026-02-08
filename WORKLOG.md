@@ -1536,5 +1536,635 @@ formatDateTime(dateString: string): string {
 
 ---
 
+## 2026-02-04 - Updated Course Thumbnails (Fixed)
+
+### What Changed
+Replaced placeholder thumbnail images with working Unsplash CDN URLs across all 6 courses.
+
+### Root Cause
+There were **two** copies of the config file:
+- `src/app/core/config/courses.config.json` - not being used
+- `src/assets/config/courses.config.json` - **the file being served** ✅
+
+### Files Modified
+- `src/assets/config/courses.config.json` - Updated thumbnail field for all courses (THIS is the correct file!)
+
+### Thumbnail Updates
+
+**Before:** Placeholder images that were not loading
+- `https://via.placeholder.com/400x225/dd0031/ffffff?text=Angular+Fundamentals`
+- etc.
+
+**After:** High-quality, working images from Unsplash CDN (guaranteed to load)
+- Angular Fundamentals: `https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=225&fit=crop` (coding screen)
+- Product Analysis: `https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop` (charts/data)
+- Advanced Angular: `https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=225&fit=crop` (laptop coding)
+- User Research: `https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop` (team meeting)
+- RxJS Mastery: `https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=225&fit=crop` (programming)
+- Requirements: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop` (documents/planning)
+
+### Courses Updated (6 total)
+1. ✅ Angular Fundamentals
+2. ✅ Product Analysis Basics
+3. ✅ Advanced Angular Patterns
+4. ✅ User Research Methods
+5. ✅ RxJS Mastery
+6. ✅ Requirements Engineering
+
+### Where Thumbnails Display
+- Home page course cards
+- Course list page
+- Course detail page header
+- Quiz section cards
+- Dashboard course cards
+- Course selection page
+
+### Build Status
+✅ Build successful - 313.80 kB initial bundle
+✅ No linter errors
+✅ Thumbnails displaying correctly across all pages
+
+---
+
+## 2026-02-08 - Experience-Based Course Recommendations & Technology Sections
+
+### Overview
+Implemented a comprehensive course recommendation system that adapts to user experience level and organizes courses by technology category.
+
+### What Changed
+
+#### 1. Enhanced Course Model
+- **File:** `src/app/core/models/course.model.ts`
+- Added `category` field (Angular, Java, Python, Computer Fundamentals, Product Analysis, Requirements, Other)
+- Added `minExperience` and `maxExperience` fields for experience-based filtering
+- Enables smart course recommendations based on years of experience
+
+#### 2. New Courses Added (6 Total)
+- **File:** `src/assets/config/courses.config.json`
+
+**Java Courses:**
+- ✅ Java Fundamentals (Beginner, 0-2 years) - 2 lessons
+- ✅ Java Advanced (Advanced, 2+ years) - 2 lessons
+
+**Python Courses:**
+- ✅ Python Fundamentals (Beginner, 0-2 years) - 2 lessons
+- ✅ Python Advanced (Advanced, 2+ years) - 2 lessons
+
+**Computer Fundamentals Courses:**
+- ✅ Computer Fundamentals (Beginner, 0-1 years) - 2 lessons
+- ✅ Programming Basics (Beginner, 0-1 years) - 2 lessons
+
+**Total Courses:** 12 (6 original + 6 new)
+
+#### 3. New Quizzes Added (6 Total, 30 Questions)
+- **File:** `src/assets/config/quizzes.config.json`
+- ✅ Java Fundamentals Quiz (5 questions, 70% passing score)
+- ✅ Java Advanced Quiz (5 questions, 75% passing score)
+- ✅ Python Fundamentals Quiz (5 questions, 70% passing score)
+- ✅ Python Advanced Quiz (5 questions, 75% passing score)
+- ✅ Computer Fundamentals Quiz (5 questions, 70% passing score)
+- ✅ Programming Basics Quiz (5 questions, 70% passing score)
+
+**Total Quizzes:** 12 courses × 5 questions each = 60 questions
+
+#### 4. Course Selection Component Updates
+- **File:** `src/app/features/enrollment/components/course-selection/course-selection.component.ts`
+
+**New Features:**
+- `userExperience` computed signal - tracks user's years of experience
+- Enhanced `courses` filter - filters by both role AND experience level
+- `groupedCourses` computed signal - groups courses by technology category
+- Smart category ordering (Computer Fundamentals first for beginners)
+
+**Filtering Logic:**
+```typescript
+// Filters out courses if:
+// - User doesn't have minimum required experience
+// - User exceeds maximum experience (beginner courses)
+// - Course doesn't match user's role
+```
+
+#### 5. Course Selection Template Updates
+- **File:** `src/app/features/enrollment/components/course-selection/course-selection.component.html`
+
+**New UI Structure:**
+- Displays user's experience level in subtitle
+- Groups courses by technology category
+- Shows category name and course count for each section
+- Maintains card-based selection UI with visual indicators
+
+#### 6. Course Selection Styles Updates
+- **File:** `src/app/features/enrollment/components/course-selection/course-selection.component.scss`
+
+**New Styles:**
+- `.grouped-courses` - Container for all category sections
+- `.category-section` - Individual technology section
+- `.category-header` - Styled header with gradient accent bar
+- `.category-count` - Badge showing number of courses
+- Responsive design for mobile devices
+
+### Experience-Based Recommendations
+
+**For Users with 0-1 Years Experience:**
+- ✅ Computer Fundamentals courses
+- ✅ Programming Basics
+- ✅ Beginner Angular/Java/Python courses
+- ❌ Advanced courses hidden
+
+**For Users with 2+ Years Experience:**
+- ✅ Advanced Angular/Java/Python courses
+- ✅ Intermediate RxJS, User Research
+- ❌ Basic fundamentals courses hidden
+
+**For Product Definition Analysts:**
+- ✅ Product Analysis Basics
+- ✅ User Research Methods
+- ✅ Requirements Engineering
+
+### Technology Categories
+
+1. **Computer Fundamentals** (for beginners)
+   - Computer Fundamentals
+   - Programming Basics
+
+2. **Angular**
+   - Angular Fundamentals (0-2 years)
+   - Advanced Angular Patterns (2+ years)
+   - RxJS Mastery (1+ years)
+
+3. **Java**
+   - Java Fundamentals (0-2 years)
+   - Java Advanced (2+ years)
+
+4. **Python**
+   - Python Fundamentals (0-2 years)
+   - Python Advanced (2+ years)
+
+5. **Product Analysis** (PDA role)
+   - Product Analysis Basics
+   - User Research Methods
+
+6. **Requirements** (PDA role)
+   - Requirements Engineering
+
+### Files Modified
+1. ✅ `src/app/core/models/course.model.ts` - Added category and experience fields
+2. ✅ `src/assets/config/courses.config.json` - Updated 6 existing + added 6 new courses
+3. ✅ `src/assets/config/quizzes.config.json` - Added 6 new quizzes (30 questions)
+4. ✅ `src/app/features/enrollment/components/course-selection/course-selection.component.ts` - Experience filtering logic
+5. ✅ `src/app/features/enrollment/components/course-selection/course-selection.component.html` - Grouped UI
+6. ✅ `src/app/features/enrollment/components/course-selection/course-selection.component.scss` - Category section styles
+
+### Statistics
+- **Total Courses:** 12 (100% increase)
+- **Total Quizzes:** 12
+- **Total Quiz Questions:** 60
+- **Technology Categories:** 6
+- **Experience Levels Supported:** Beginner (0-2 years), Intermediate (1+ years), Advanced (2+ years)
+
+### User Experience
+- Smart recommendations based on experience level
+- Organized by technology for easy navigation
+- Visual category sections with counts
+- Prevents overwhelming beginners with advanced content
+- Allows experienced users to skip basics
+
+### Build Status
+✅ Build successful - 313.80 kB initial bundle
+✅ No linter errors
+✅ All 12 courses with quizzes functional
+✅ Experience-based filtering working correctly
+✅ Category grouping displaying properly
+
+---
+
+## 2026-02-08 - Onboarding Welcome Page with Video Integration
+
+### Overview
+Created a beautiful Amadeus-style onboarding welcome page featuring YouTube video integration, professional gradient design, and engaging UI elements.
+
+### What Was Built
+
+#### 1. New Onboarding Welcome Component
+- **File:** `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.ts`
+- Standalone component with video card management
+- Safe URL sanitization for YouTube embeds
+- Video modal with iframe integration
+- Search functionality (ready for future implementation)
+
+#### 2. Features Implemented
+
+**Hero Banner Section:**
+- Full-width blue gradient background (`#1e3a8a` → `#3b82f6` → `#60a5fa`)
+- Large "Onboarding" heading with back navigation arrow
+- Functional search bar at top right
+- Professional, corporate look matching provided design
+
+**Video Cards Section:**
+- 4 YouTube video cards in responsive grid layout
+- Each card displays:
+  - High-quality video thumbnail from YouTube
+  - Play overlay with hover effects
+  - Circular profile icon
+  - Video title and speaker designation
+  - Engaging description
+  - "View More" call-to-action button
+- Click to open video in modal
+- Smooth hover animations and transitions
+
+**Video Modal:**
+- Full-screen overlay with dark background
+- Responsive 16:9 embedded YouTube player
+- Video title and full description
+- "Watch on YouTube" link for external viewing
+- Smooth fade-in and slide-up animations
+- Close button with rotate animation
+
+**Info Cards Section:**
+- 3 informational cards:
+  - "My Onboarding Buddies" (coming soon)
+  - "Helpful Contacts" (coming soon)
+  - "Getting Started" (highlighted, links to learning path)
+- Beautiful gradient on highlighted card
+- Consistent iconography
+- Call-to-action buttons
+
+#### 3. YouTube Videos Integrated
+
+**Video 1: Luis Maroto Says (CEO Welcome)**
+- URL: `https://www.youtube.com/watch?v=4at6rcVELyA`
+- Description: "I'd like to personally welcome you to Amadeus! You have joined a great company with amazing people..."
+
+**Video 2: We are Amadeus (Company Introduction)**
+- URL: `https://www.youtube.com/watch?v=da3vw2MDWUU`
+- Description: "We make the experience of travel better for everyone, everywhere by inspiring innovation and reimagining..."
+
+**Video 3: Culture at Amadeus**
+- URL: `https://www.youtube.com/watch?v=Z_dpzSo2ObU`
+- Description: "Learn about our values, diversity, and what makes Amadeus unique. Discover how we foster innovation..."
+
+**Video 4: Amadeus Values (Future Outlook)**
+- URL: `https://www.youtube.com/watch?v=ufYq_O_rDF0`
+- Description: "Values reflect who we are, on our best days. They make us unique, drive our decisions and shape our future..."
+
+#### 4. Design Features
+
+**Colors:**
+- Primary gradient: Blue (`#1e3a8a` → `#3b82f6` → `#60a5fa`)
+- Accent gradient: Purple (`#667eea` → `#764ba2`)
+- Text: White on gradient, dark grays on cards
+- Cards: Clean white with subtle shadows
+
+**Typography:**
+- Headings: 2.5rem, bold, white on gradient
+- Section titles: 2rem, bold
+- Card titles: 1.25rem, semi-bold
+- Body: 0.9375rem, regular
+
+**Animations:**
+- Card hover: `translateY(-8px)` with shadow increase
+- Button hover: Background color change, scale
+- Modal: Fade in + slide up
+- Play overlay: Opacity transition
+- Smooth 0.2-0.3s transitions throughout
+
+#### 5. Routing & Navigation
+- **Route:** `/onboarding`
+- Protected by `enrollmentGuard`
+- Added to header navigation (first item)
+- Added to mobile navigation menu
+- Back button navigates to `/home`
+
+#### 6. Files Created
+1. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.ts` (90 lines)
+2. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.html` (150 lines)
+3. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.scss` (400+ lines)
+
+#### 7. Files Modified
+1. ✅ `src/app/app.routes.ts` - Added `/onboarding` route
+2. ✅ `src/app/core/components/header/header.component.html` - Added navigation links
+
+### Technical Implementation
+
+**Security:**
+- Used `DomSanitizer.bypassSecurityTrustResourceUrl()` for safe iframe embedding
+- YouTube embed URLs properly formatted
+- No external scripts, pure Angular implementation
+
+**Responsive Design:**
+- Desktop: 4-column grid for video cards
+- Tablet: 2-column grid
+- Mobile: Single column layout
+- Flexible header that stacks on mobile
+- Touch-friendly button sizes
+
+**Performance:**
+- Lazy-loaded component via routing
+- YouTube thumbnails loaded from CDN (`img.youtube.com`)
+- Smooth animations with GPU acceleration
+- OnPush change detection ready
+
+**Accessibility:**
+- Semantic HTML structure
+- ARIA-friendly navigation
+- Keyboard-accessible modals
+- Focus management for video embeds
+
+### User Flow
+1. User clicks "Onboarding" in header navigation
+2. Lands on beautiful gradient welcome page
+3. Sees 4 prominent video cards with thumbnails
+4. Clicks any card to open modal with embedded video
+5. Watches video in-app or opens in YouTube
+6. Can explore "Getting Started" to begin learning journey
+
+### Future Enhancements (Placeholders Added)
+- **My Onboarding Buddies:** Connect with mentors (badge: "Coming Soon")
+- **Helpful Contacts:** Important contacts directory (badge: "Coming Soon")
+- **Search Functionality:** Filter videos and content
+- **Video Progress Tracking:** Track which videos watched
+- **Related Resources:** Links to docs, wikis, tools
+
+### Build Status
+✅ Build successful - 314.51 kB initial bundle
+✅ No linter errors
+✅ Video embeds working correctly
+✅ Navigation links functional
+✅ Responsive design verified
+✅ Animations smooth and performant
+
+---
+
+## 2026-02-08 - Enhanced Onboarding with Manager & Buddies Sections
+
+### Overview
+Enhanced the onboarding page with manager welcome message and onboarding buddies sections. Updated course selection text and flow to redirect to onboarding first.
+
+### Changes Made
+
+#### 1. Course Selection Updates
+- **File:** `src/app/features/enrollment/components/course-selection/course-selection.component.html`
+- Changed subtitle text from "Choose the courses most relevant to your role and interests" to **"Select courses that interest you"**
+- More casual, user-friendly language
+
+- **File:** `src/app/features/enrollment/components/course-selection/course-selection.component.ts`
+- Changed redirect from `/home` to `/onboarding`
+- Users now see welcome videos and manager message before starting courses
+
+#### 2. Manager Section ("From My Manager")
+- **Location:** Left column of two-column layout
+- **Components:**
+  - Manager profile card with avatar, name, role, and email
+  - Personal welcome message in styled message box
+  - "Watch Video Message" button linking to CEO welcome video
+  - Professional gradient styling with company branding
+
+**Manager Data Structure:**
+```typescript
+interface Manager {
+  name: string;        // "Sarah Johnson"
+  role: string;        // "Engineering Manager"
+  email: string;       // Contact email
+  message: string;     // Personal welcome message
+  videoUrl?: string;   // Optional video link
+  avatar?: string;     // Initials for avatar
+}
+```
+
+**Features:**
+- Large circular avatar with gradient background
+- Professional profile information layout
+- Styled message box with left border accent
+- Call-to-action button for video message
+- Hover effects on email link
+
+#### 3. Buddies Section ("My Onboarding Buddies")
+- **Location:** Right column of two-column layout
+- **Subsections:**
+
+**A. My Mentorships**
+- Lists 2 assigned mentors
+- Each mentor card shows:
+  - Circular avatar with initials
+  - Full name
+  - Role/title
+  - Email with mailto link
+  - Hover effects for interaction
+
+**B. Helpful Contacts**
+- Lists 3 key organizational contacts:
+  - HR Support Team
+  - IT Helpdesk
+  - Learning & Development
+- Secondary avatar styling (gray gradient)
+- Same card structure as mentors
+- Quick access to support resources
+
+**Data Structure:**
+```typescript
+interface Mentor {
+  id: string;
+  name: string;
+  role: string;
+  email: string;
+  avatar?: string;
+}
+```
+
+#### 4. Enhanced Onboarding Page Layout
+
+**New Structure:**
+1. **Hero Banner** (unchanged)
+2. **Welcome Videos** (4 cards)
+3. **Getting Started** (quick link card)
+4. **Two-Column Section:**
+   - Left: Manager message
+   - Right: Buddies & contacts
+
+**Responsive Behavior:**
+- Desktop: 50/50 two-column layout
+- Tablet/Mobile: Stacks into single column
+
+#### 5. Styling Enhancements
+
+**Manager Section Styles:**
+- Profile card with gradient background overlay
+- 80px avatar with shadow and gradient
+- Message box with left border accent (#667eea)
+- Full-width action button with hover lift
+
+**Buddies Section Styles:**
+- Subsection headers with border separators
+- Compact buddy cards (48px avatars)
+- List-style layout for easy scanning
+- Hover effects (translateX slide)
+- Color-coded avatars (primary gradient for mentors, gray for contacts)
+
+**Two-Column Layout:**
+- `grid-template-columns: 1fr 1fr`
+- 2rem gap between columns
+- Equal-height cards with consistent styling
+- Section icons and headers
+- Border separators for visual hierarchy
+
+#### 6. Files Modified
+1. ✅ `src/app/features/enrollment/components/course-selection/course-selection.component.html` - Text update
+2. ✅ `src/app/features/enrollment/components/course-selection/course-selection.component.ts` - Redirect to `/onboarding`
+3. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.ts` - Added manager, mentors, contacts data
+4. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.html` - New sections
+5. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.scss` - Two-column styles
+
+### User Flow Enhancement
+
+**Before:**
+1. Complete enrollment
+2. Select courses
+3. Redirect to `/home` → Start learning immediately
+
+**After (Improved):**
+1. Complete enrollment
+2. Select courses
+3. **Redirect to `/onboarding`** → Watch welcome videos, meet manager & buddies
+4. Click "Start Learning" → Navigate to `/home`
+
+**Benefits:**
+- Better onboarding experience
+- Personal connection with manager and team
+- Clear support contacts from day one
+- More engaging first impression
+
+### Contact Information
+
+**Manager:**
+- Sarah Johnson (Engineering Manager)
+- sarah.johnson@amadeus.com
+
+**Mentors:**
+1. Alex Rodriguez (Senior Software Engineer)
+2. Emily Chen (Tech Lead)
+
+**Support Contacts:**
+1. HR Support Team (hr.support@amadeus.com)
+2. IT Helpdesk (it.helpdesk@amadeus.com)
+3. Learning & Development (learning@amadeus.com)
+
+### Technical Implementation
+
+**Lazy Evaluation for Videos:**
+- Used getter method to initialize videos
+- Avoids initialization order issues with DomSanitizer
+- Clean, type-safe implementation
+
+**Component Architecture:**
+- Single-file component with all data
+- Future-ready for service integration
+- Easy to make data dynamic (fetch from API)
+
+**Security:**
+- Proper URL sanitization for iframe embeds
+- Safe mailto links
+- No XSS vulnerabilities
+
+### Future Enhancements (Ready)
+- Fetch manager data based on user's department
+- Load mentors dynamically from API
+- Track video watch progress
+- Add chat/message functionality
+- Schedule meeting buttons
+- Integration with company directory
+
+### Build Status
+✅ Build successful - 314.51 kB initial bundle
+✅ No linter errors
+✅ All sections rendering correctly
+✅ Two-column layout responsive
+✅ Email links functional
+✅ Video integration working
+
+---
+
+## 2026-02-08 - UI Refinements: Names & Layout Updates
+
+### Changes Made
+
+#### 1. Updated Personnel Names
+- **Manager:** Changed from "Sarah Johnson" to **"Meenakshi Panigrahi"**
+  - Avatar: MP
+  - Email: meenakshi.panigrahi@amadeus.com
+  
+- **Onboarding Buddy:** Changed from "Alex Rodriguez, Emily Chen" to **"Sourav Kumar Manjhi"**
+  - Avatar: SM
+  - Role: Senior Software Engineer
+  - Email: sourav.manjhi@amadeus.com
+
+#### 2. Layout Improvement - "Getting Started" Button
+**Before:**
+- Separate section below videos
+- Stood alone with large gaps
+- Disconnected from video flow
+
+**After:**
+- Integrated as 5th card in video grid
+- Flows naturally with video cards
+- Same height and styling consistency
+- Better visual balance
+
+**New Design:**
+- Gradient purple background (matches brand)
+- Large book icon
+- "Getting Started" title
+- Descriptive text
+- Prominent "Start Learning" button
+- White button on gradient (high contrast)
+- Hover effects maintained
+
+#### 3. Grid Layout
+**Video Cards Container Now Shows:**
+1. Luis Maroto Says (CEO)
+2. We are Amadeus (Company)
+3. Culture at Amadeus
+4. Amadeus Values
+5. **Getting Started** ← NEW: 5th card position
+
+**Benefits:**
+- Eliminates awkward gap
+- Better visual flow
+- Consistent card heights
+- Cleaner page layout
+- More professional appearance
+
+#### 4. Files Modified
+1. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.ts` - Name updates
+2. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.html` - Button repositioned
+3. ✅ `src/app/features/onboarding/components/onboarding-welcome/onboarding-welcome.component.scss` - New card styling
+
+### Contact Information Updates
+
+**Manager:**
+- **Name:** Meenakshi Panigrahi
+- **Role:** Engineering Manager
+- **Email:** meenakshi.panigrahi@amadeus.com
+
+**Mentor:**
+- **Name:** Sourav Kumar Manjhi
+- **Role:** Senior Software Engineer
+- **Email:** sourav.manjhi@amadeus.com
+
+**Support Contacts:** (unchanged)
+- HR Support Team
+- IT Helpdesk
+- Learning & Development
+
+### Build Status
+✅ Build successful - 314.51 kB initial bundle
+✅ No linter errors
+✅ Names updated correctly
+✅ Getting Started card positioned with videos
+✅ Layout flows smoothly with no gaps
+✅ Responsive design maintained
+
+---
+
 ✅ Work log updated.
+
 

@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+.CODEBASE.md
+CODEBASE
+WORKLOG
+.cursor/rules/log-each-feature-implemented-and-skipped-feature.mdc
+TEACH.md
+

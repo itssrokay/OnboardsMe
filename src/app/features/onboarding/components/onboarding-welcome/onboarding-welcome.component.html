@@ -1,0 +1,236 @@
+<div class="onboarding-container">
+  <!-- Hero Banner -->
+  <div class="hero-banner">
+    <div class="hero-header">
+      <div class="header-left">
+        <button class="back-button" (click)="goBack()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <h1 class="page-title">Onboarding</h1>
+      </div>
+      <div class="header-right">
+        <div class="search-container">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Search"
+            (input)="onSearch($event)"
+            [value]="searchQuery()"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Video Cards Section -->
+    <section class="video-section">
+      <h2 class="section-title">Welcome to Your Journey</h2>
+      <p class="section-subtitle">Watch these videos to learn more about Amadeus and get started</p>
+      
+      <div class="video-cards-container">
+        @for (video of videos; track video.id) {
+          <div class="video-card" (click)="openVideo(video)">
+            <div class="video-thumbnail">
+              <img [src]="video.thumbnail" [alt]="video.title" />
+              <div class="play-overlay">
+                <svg class="play-icon" width="48" height="48" viewBox="0 0 24 24" fill="white">
+                  <circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.6)"/>
+                  <polygon points="10,8 16,12 10,16" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div class="video-content">
+              <div class="video-header">
+                <div class="video-avatar">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                  </svg>
+                </div>
+                <div class="video-info">
+                  <h3 class="video-title">{{ video.title }}</h3>
+                  @if (video.speaker) {
+                    <span class="video-speaker">{{ video.speaker }}</span>
+                  }
+                </div>
+              </div>
+              <p class="video-description">{{ video.description }}</p>
+              <button class="view-more-btn" (click)="viewMore(video); $event.stopPropagation()">
+                View More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        }
+        
+        <!-- Getting Started Card (placed as 5th card) -->
+        <div class="video-card getting-started-card">
+          <div class="getting-started-content">
+            <div class="getting-started-icon">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+            <h3 class="getting-started-title">Getting Started</h3>
+            <p class="getting-started-description">Your personalized learning path awaits. Start your journey today!</p>
+            <button class="start-learning-btn" (click)="router.navigate(['/home'])">
+              Start Learning
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manager and Buddies Section - Two Columns -->
+    <section class="two-column-section">
+      <!-- Left Column: From My Manager -->
+      <div class="manager-section">
+        <div class="section-card">
+          <div class="section-header">
+            <svg class="section-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <h2>From My Manager</h2>
+          </div>
+          
+          <div class="manager-card">
+            <div class="manager-profile">
+              <div class="manager-avatar">{{ manager.avatar }}</div>
+              <div class="manager-info">
+                <h3 class="manager-name">{{ manager.name }}</h3>
+                <p class="manager-role">{{ manager.role }}</p>
+                <a [href]="'mailto:' + manager.email" class="manager-email">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  {{ manager.email }}
+                </a>
+              </div>
+            </div>
+            
+            <div class="manager-message">
+              <p>{{ manager.message }}</p>
+            </div>
+            
+            @if (manager.videoUrl) {
+              <button class="watch-message-btn" (click)="openVideo(videos[0])">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5,3 19,12 5,21"/>
+                </svg>
+                Watch Video Message
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: My Onboarding Buddies -->
+      <div class="buddies-section">
+        <div class="section-card">
+          <div class="section-header">
+            <svg class="section-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <h2>My Onboarding Buddies</h2>
+          </div>
+
+          <!-- My Mentorships -->
+          <div class="subsection">
+            <h3 class="subsection-title">My Mentorships</h3>
+            <div class="buddy-list">
+              @for (mentor of mentors; track mentor.id) {
+                <div class="buddy-card">
+                  <div class="buddy-avatar">{{ mentor.avatar }}</div>
+                  <div class="buddy-info">
+                    <h4 class="buddy-name">{{ mentor.name }}</h4>
+                    <p class="buddy-role">{{ mentor.role }}</p>
+                    <a [href]="'mailto:' + mentor.email" class="buddy-email">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                      {{ mentor.email }}
+                    </a>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Helpful Contacts -->
+          <div class="subsection">
+            <h3 class="subsection-title">Helpful Contacts</h3>
+            <div class="buddy-list">
+              @for (contact of contacts; track contact.id) {
+                <div class="buddy-card">
+                  <div class="buddy-avatar secondary">{{ contact.avatar }}</div>
+                  <div class="buddy-info">
+                    <h4 class="buddy-name">{{ contact.name }}</h4>
+                    <p class="buddy-role">{{ contact.role }}</p>
+                    <a [href]="'mailto:' + contact.email" class="buddy-email">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                      {{ contact.email }}
+                    </a>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Video Modal -->
+@if (selectedVideo()) {
+  <div class="video-modal-overlay" (click)="closeVideo()">
+    <div class="video-modal" (click)="$event.stopPropagation()">
+      <button class="close-modal-btn" (click)="closeVideo()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-content">
+        <h2 class="modal-title">{{ selectedVideo()!.title }}</h2>
+        <div class="video-embed">
+          <iframe 
+            [src]="selectedVideo()!.embedUrl" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="modal-description">{{ selectedVideo()!.description }}</p>
+        <a [href]="selectedVideo()!.videoUrl" target="_blank" class="watch-youtube-btn">
+          Watch on YouTube
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+}

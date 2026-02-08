@@ -75,6 +75,13 @@ export interface Course {
   roles: ('Developer' | 'Product Definition Analyst (PDA)')[];
   addedDate: string;
   
+  // Technology category for grouping courses
+  category?: 'Angular' | 'Java' | 'Python' | 'Computer Fundamentals' | 'Product Analysis' | 'Requirements' | 'Other';
+  
+  // Experience level requirements (in years)
+  minExperience?: number; // Minimum years of experience
+  maxExperience?: number; // Maximum years of experience (for beginner courses)
+  
   // Course content
   lessons: Lesson[];
   

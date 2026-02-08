@@ -57,6 +57,23 @@
             </div>
           }
         </div>
+        @if (shouldShowSeeMore('continue')) {
+          <div class="see-more-container">
+            <button class="see-more-btn" (click)="toggleContinueLearning()">
+              @if (showAllContinueLearning()) {
+                Show Less
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="18 15 12 9 6 15"/>
+                </svg>
+              } @else {
+                See More ({{ continueLearningAll().length - 3 }} more)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              }
+            </button>
+          </div>
+        }
       </section>
     }
 
@@ -94,6 +111,23 @@
           </div>
         }
       </div>
+      @if (shouldShowSeeMore('recent')) {
+        <div class="see-more-container">
+          <button class="see-more-btn" (click)="toggleRecentlyAdded()">
+            @if (showAllRecentlyAdded()) {
+              Show Less
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"/>
+              </svg>
+            } @else {
+              See More ({{ recentlyAddedAll().length - 3 }} more)
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            }
+          </button>
+        </div>
+      }
     </section>
 
     <!-- Popular in Your Role Section -->
@@ -135,6 +169,23 @@
           </div>
         }
       </div>
+      @if (shouldShowSeeMore('popular')) {
+        <div class="see-more-container">
+          <button class="see-more-btn" (click)="togglePopularInRole()">
+            @if (showAllPopularInRole()) {
+              Show Less
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"/>
+              </svg>
+            } @else {
+              See More ({{ popularInRoleAll().length - 3 }} more)
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            }
+          </button>
+        </div>
+      }
     </section>
 
     <!-- Recommended for You Section -->
@@ -164,6 +215,23 @@
             </div>
           }
         </div>
+        @if (shouldShowSeeMore('recommended')) {
+          <div class="see-more-container">
+            <button class="see-more-btn" (click)="toggleRecommended()">
+              @if (showAllRecommended()) {
+                Show Less
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="18 15 12 9 6 15"/>
+                </svg>
+              } @else {
+                See More ({{ recommendedForYouAll().length - 3 }} more)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              }
+            </button>
+          </div>
+        }
       </section>
     }
   </div>

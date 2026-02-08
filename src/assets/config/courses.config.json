@@ -4,12 +4,15 @@
       "id": "angular-fundamentals",
       "title": "Angular Fundamentals",
       "description": "Learn the core concepts of Angular framework including components, templates, directives, and services.",
-      "thumbnail": "https://via.placeholder.com/400x225/dd0031/ffffff?text=Angular+Fundamentals",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=225&fit=crop",
       "duration": "8 hours",
       "difficulty": "Beginner",
       "tags": ["Angular", "TypeScript", "Frontend"],
       "roles": ["Developer"],
       "addedDate": "2024-01-15",
+      "category": "Angular",
+      "minExperience": 0,
+      "maxExperience": 2,
       "instructor": {
         "name": "Sarah Chen",
         "title": "Senior Angular Developer"
@@ -190,12 +193,15 @@
       "id": "product-analysis-basics",
       "title": "Product Analysis Basics",
       "description": "Essential skills for product definition and analysis including requirements gathering and stakeholder management.",
-      "thumbnail": "https://via.placeholder.com/400x225/6366f1/ffffff?text=Product+Analysis",
+      "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop",
       "duration": "6 hours",
       "difficulty": "Beginner",
       "tags": ["Product", "Analysis", "Requirements"],
       "roles": ["Product Definition Analyst (PDA)"],
       "addedDate": "2024-01-20",
+      "category": "Product Analysis",
+      "minExperience": 0,
+      "maxExperience": 3,
       "instructor": {
         "name": "Michael Brooks",
         "title": "Lead Product Analyst"
@@ -335,12 +341,14 @@
       "id": "advanced-angular",
       "title": "Advanced Angular Patterns",
       "description": "Master advanced patterns and best practices in Angular including state management, performance optimization, and architecture.",
-      "thumbnail": "https://via.placeholder.com/400x225/dd0031/ffffff?text=Advanced+Angular",
+      "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=225&fit=crop",
       "duration": "12 hours",
       "difficulty": "Advanced",
       "tags": ["Angular", "Architecture", "Best Practices"],
       "roles": ["Developer"],
       "addedDate": "2024-01-10",
+      "category": "Angular",
+      "minExperience": 2,
       "instructor": {
         "name": "David Martinez",
         "title": "Angular Architect"
@@ -480,12 +488,14 @@
       "id": "user-research-methods",
       "title": "User Research Methods",
       "description": "Learn effective user research techniques for product development including interviews, surveys, and usability testing.",
-      "thumbnail": "https://via.placeholder.com/400x225/10b981/ffffff?text=User+Research",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
       "duration": "10 hours",
       "difficulty": "Intermediate",
       "tags": ["Research", "UX", "Product"],
       "roles": ["Product Definition Analyst (PDA)"],
       "addedDate": "2024-01-18",
+      "category": "Product Analysis",
+      "minExperience": 1,
       "instructor": {
         "name": "Emily Watson",
         "title": "UX Research Lead"
@@ -625,12 +635,14 @@
       "id": "rxjs-mastery",
       "title": "RxJS Mastery",
       "description": "Deep dive into reactive programming with RxJS - from basics to advanced patterns.",
-      "thumbnail": "https://via.placeholder.com/400x225/b7178c/ffffff?text=RxJS+Mastery",
+      "thumbnail": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=225&fit=crop",
       "duration": "15 hours",
       "difficulty": "Advanced",
       "tags": ["RxJS", "Reactive", "Async"],
       "roles": ["Developer"],
       "addedDate": "2024-01-05",
+      "category": "Angular",
+      "minExperience": 1,
       "instructor": {
         "name": "Alex Johnson",
         "title": "Reactive Programming Expert"
@@ -770,12 +782,14 @@
       "id": "requirements-engineering",
       "title": "Requirements Engineering",
       "description": "Master the art of requirements gathering, documentation, and management for successful projects.",
-      "thumbnail": "https://via.placeholder.com/400x225/f59e0b/ffffff?text=Requirements",
+      "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop",
       "duration": "9 hours",
       "difficulty": "Intermediate",
       "tags": ["Requirements", "Documentation", "Analysis"],
       "roles": ["Product Definition Analyst (PDA)"],
       "addedDate": "2024-01-22",
+      "category": "Requirements",
+      "minExperience": 0,
       "instructor": {
         "name": "Jennifer Lee",
         "title": "Business Analysis Manager"
@@ -905,6 +919,658 @@
               "videoSource": "youtube",
               "videoDuration": "16:00",
               "estimatedTime": 17,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-fundamentals",
+      "title": "Java Fundamentals",
+      "description": "Learn Java programming from scratch including syntax, OOP concepts, and core libraries.",
+      "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=225&fit=crop",
+      "duration": "10 hours",
+      "difficulty": "Beginner",
+      "tags": ["Java", "Programming", "Backend"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-25",
+      "category": "Java",
+      "minExperience": 0,
+      "maxExperience": 2,
+      "instructor": {
+        "name": "Michael Brown",
+        "title": "Senior Java Developer"
+      },
+      "learningOutcomes": [
+        "Understand Java syntax and basic programming concepts",
+        "Master object-oriented programming in Java",
+        "Work with Java collections and data structures",
+        "Build simple Java applications"
+      ],
+      "prerequisites": ["Basic computer skills"],
+      "lessons": [
+        {
+          "id": "java-lesson-1",
+          "title": "Introduction to Java",
+          "description": "Get started with Java programming language.",
+          "order": 1,
+          "estimatedDuration": "60 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "java-1-1",
+              "title": "What is Java?",
+              "description": "Overview of Java and its ecosystem",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=eIrMbAQSU34",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "java-1-2",
+              "title": "Java Official Documentation",
+              "description": "Explore Java documentation",
+              "type": "url",
+              "url": "https://docs.oracle.com/en/java/",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "java-1-3",
+              "title": "Setting Up Java Development Environment",
+              "description": "Install JDK and IDE",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=IJ-PJbvJBGs",
+              "videoSource": "youtube",
+              "videoDuration": "12:30",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "java-lesson-2",
+          "title": "Object-Oriented Programming in Java",
+          "description": "Master OOP concepts in Java.",
+          "order": 2,
+          "estimatedDuration": "90 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "java-2-1",
+              "title": "Classes and Objects",
+              "description": "Learn about Java classes and objects",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=IUqKuGNasdM",
+              "videoSource": "youtube",
+              "videoDuration": "25:00",
+              "estimatedTime": 30,
+              "order": 1
+            },
+            {
+              "id": "java-2-2",
+              "title": "Inheritance and Polymorphism",
+              "description": "Understanding OOP principles",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=9JpNY-XAseg",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "java-2-3",
+              "title": "Java OOP Best Practices",
+              "description": "Design patterns and best practices",
+              "type": "url",
+              "url": "https://www.baeldung.com/java-oop",
+              "estimatedTime": 35,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-advanced",
+      "title": "Advanced Java Programming",
+      "description": "Master advanced Java concepts including concurrency, streams, and enterprise patterns.",
+      "thumbnail": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=225&fit=crop",
+      "duration": "14 hours",
+      "difficulty": "Advanced",
+      "tags": ["Java", "Advanced", "Enterprise"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-26",
+      "category": "Java",
+      "minExperience": 2,
+      "instructor": {
+        "name": "Michael Brown",
+        "title": "Senior Java Developer"
+      },
+      "learningOutcomes": [
+        "Master Java concurrency and multithreading",
+        "Implement advanced design patterns",
+        "Work with Java Streams and Lambdas",
+        "Build scalable enterprise applications"
+      ],
+      "prerequisites": ["Java Fundamentals", "OOP concepts"],
+      "lessons": [
+        {
+          "id": "java-adv-lesson-1",
+          "title": "Concurrency and Multithreading",
+          "description": "Master concurrent programming in Java.",
+          "order": 1,
+          "estimatedDuration": "120 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "java-adv-1-1",
+              "title": "Java Threads Fundamentals",
+              "description": "Understanding threads and concurrency",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=r_MbozD32eo",
+              "videoSource": "youtube",
+              "videoDuration": "30:00",
+              "estimatedTime": 40,
+              "order": 1
+            },
+            {
+              "id": "java-adv-1-2",
+              "title": "Executors and Thread Pools",
+              "description": "Managing threads efficiently",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=6Oo-9Can3H8",
+              "videoSource": "youtube",
+              "videoDuration": "25:00",
+              "estimatedTime": 35,
+              "order": 2
+            },
+            {
+              "id": "java-adv-1-3",
+              "title": "Concurrency Best Practices",
+              "description": "Thread safety and synchronization",
+              "type": "url",
+              "url": "https://www.baeldung.com/java-concurrency",
+              "estimatedTime": 45,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "java-adv-lesson-2",
+          "title": "Streams and Functional Programming",
+          "description": "Master Java Streams API and functional concepts.",
+          "order": 2,
+          "estimatedDuration": "90 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "java-adv-2-1",
+              "title": "Introduction to Streams",
+              "description": "Understanding Java Streams API",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=t1-YZ6bF-g0",
+              "videoSource": "youtube",
+              "videoDuration": "28:00",
+              "estimatedTime": 35,
+              "order": 1
+            },
+            {
+              "id": "java-adv-2-2",
+              "title": "Lambda Expressions",
+              "description": "Functional programming in Java",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=tj5sLSFjVj4",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 30,
+              "order": 2
+            },
+            {
+              "id": "java-adv-2-3",
+              "title": "Stream Operations and Collectors",
+              "description": "Advanced stream processing",
+              "type": "url",
+              "url": "https://www.baeldung.com/java-streams",
+              "estimatedTime": 25,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-fundamentals",
+      "title": "Python Fundamentals",
+      "description": "Learn Python programming from basics to intermediate concepts including data structures and libraries.",
+      "thumbnail": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=225&fit=crop",
+      "duration": "9 hours",
+      "difficulty": "Beginner",
+      "tags": ["Python", "Programming", "Scripting"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-27",
+      "category": "Python",
+      "minExperience": 0,
+      "maxExperience": 2,
+      "instructor": {
+        "name": "Lisa Anderson",
+        "title": "Python Developer"
+      },
+      "learningOutcomes": [
+        "Understand Python syntax and core concepts",
+        "Work with Python data structures",
+        "Use popular Python libraries",
+        "Build simple Python applications"
+      ],
+      "prerequisites": ["Basic programming knowledge"],
+      "lessons": [
+        {
+          "id": "py-lesson-1",
+          "title": "Getting Started with Python",
+          "description": "Introduction to Python programming language.",
+          "order": 1,
+          "estimatedDuration": "50 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "py-1-1",
+              "title": "Why Python?",
+              "description": "Overview of Python and its uses",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=Y8Tko2YC5hA",
+              "videoSource": "youtube",
+              "videoDuration": "12:00",
+              "estimatedTime": 15,
+              "order": 1
+            },
+            {
+              "id": "py-1-2",
+              "title": "Python Official Documentation",
+              "description": "Explore Python docs",
+              "type": "url",
+              "url": "https://docs.python.org/3/",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "py-1-3",
+              "title": "Setting Up Python Environment",
+              "description": "Install Python and setup IDE",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+              "videoSource": "youtube",
+              "videoDuration": "10:00",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "py-lesson-2",
+          "title": "Python Data Structures",
+          "description": "Master Python lists, dictionaries, and more.",
+          "order": 2,
+          "estimatedDuration": "75 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "py-2-1",
+              "title": "Lists and Tuples",
+              "description": "Working with Python sequences",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=W8KRzm-HUcc",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 25,
+              "order": 1
+            },
+            {
+              "id": "py-2-2",
+              "title": "Dictionaries and Sets",
+              "description": "Understanding Python mappings",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=daefaLgNkw0",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "py-2-3",
+              "title": "Data Structure Best Practices",
+              "description": "Choosing the right data structure",
+              "type": "url",
+              "url": "https://realpython.com/python-data-structures/",
+              "estimatedTime": 30,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-advanced",
+      "title": "Advanced Python Programming",
+      "description": "Master advanced Python concepts including decorators, generators, async programming, and more.",
+      "thumbnail": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=225&fit=crop",
+      "duration": "13 hours",
+      "difficulty": "Advanced",
+      "tags": ["Python", "Advanced", "Async"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-28",
+      "category": "Python",
+      "minExperience": 2,
+      "instructor": {
+        "name": "Lisa Anderson",
+        "title": "Python Developer"
+      },
+      "learningOutcomes": [
+        "Master Python decorators and metaclasses",
+        "Implement asynchronous programming",
+        "Optimize Python code for performance",
+        "Build scalable Python applications"
+      ],
+      "prerequisites": ["Python Fundamentals", "OOP in Python"],
+      "lessons": [
+        {
+          "id": "py-adv-lesson-1",
+          "title": "Decorators and Generators",
+          "description": "Advanced Python patterns and techniques.",
+          "order": 1,
+          "estimatedDuration": "100 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "py-adv-1-1",
+              "title": "Understanding Decorators",
+              "description": "Function and class decorators",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=FsAPt_9Bf3U",
+              "videoSource": "youtube",
+              "videoDuration": "25:00",
+              "estimatedTime": 35,
+              "order": 1
+            },
+            {
+              "id": "py-adv-1-2",
+              "title": "Generators and Iterators",
+              "description": "Lazy evaluation in Python",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=bD05uGo_sVI",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 30,
+              "order": 2
+            },
+            {
+              "id": "py-adv-1-3",
+              "title": "Advanced Patterns",
+              "description": "Context managers and more",
+              "type": "url",
+              "url": "https://realpython.com/python-iterators-iterables/",
+              "estimatedTime": 35,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "py-adv-lesson-2",
+          "title": "Asynchronous Programming",
+          "description": "Master async/await and concurrent programming.",
+          "order": 2,
+          "estimatedDuration": "95 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "py-adv-2-1",
+              "title": "Async/Await Basics",
+              "description": "Introduction to asyncio",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=t5Bo1Je9EmE",
+              "videoSource": "youtube",
+              "videoDuration": "30:00",
+              "estimatedTime": 40,
+              "order": 1
+            },
+            {
+              "id": "py-adv-2-2",
+              "title": "Concurrent Programming",
+              "description": "Threading vs multiprocessing",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=IEEhzQoKtQU",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "py-adv-2-3",
+              "title": "Asyncio Best Practices",
+              "description": "Building async applications",
+              "type": "url",
+              "url": "https://realpython.com/async-io-python/",
+              "estimatedTime": 30,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "computer-fundamentals",
+      "title": "Computer Fundamentals",
+      "description": "Essential computer science concepts for beginners including hardware, software, and operating systems.",
+      "thumbnail": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=225&fit=crop",
+      "duration": "6 hours",
+      "difficulty": "Beginner",
+      "tags": ["Fundamentals", "Computer Science", "Basics"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-29",
+      "category": "Computer Fundamentals",
+      "minExperience": 0,
+      "maxExperience": 1,
+      "instructor": {
+        "name": "Robert Davis",
+        "title": "CS Educator"
+      },
+      "learningOutcomes": [
+        "Understand how computers work",
+        "Learn about operating systems",
+        "Grasp basic networking concepts",
+        "Understand file systems and data storage"
+      ],
+      "prerequisites": [],
+      "lessons": [
+        {
+          "id": "cs-lesson-1",
+          "title": "How Computers Work",
+          "description": "Understanding computer hardware and architecture.",
+          "order": 1,
+          "estimatedDuration": "60 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "cs-1-1",
+              "title": "Computer Hardware Basics",
+              "description": "CPU, RAM, Storage explained",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=AkFi90lZmXA",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "cs-1-2",
+              "title": "How CPUs Work",
+              "description": "Understanding processors",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=cNN_tTXABUA",
+              "videoSource": "youtube",
+              "videoDuration": "12:00",
+              "estimatedTime": 18,
+              "order": 2
+            },
+            {
+              "id": "cs-1-3",
+              "title": "Computer Architecture Guide",
+              "description": "Comprehensive overview",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/",
+              "estimatedTime": 22,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "cs-lesson-2",
+          "title": "Operating Systems Basics",
+          "description": "Learn about operating systems and how they work.",
+          "order": 2,
+          "estimatedDuration": "70 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "cs-2-1",
+              "title": "What is an Operating System?",
+              "description": "OS fundamentals",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=26QPDBe-NB8",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 25,
+              "order": 1
+            },
+            {
+              "id": "cs-2-2",
+              "title": "File Systems Explained",
+              "description": "How data is stored",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=BV0-EPUYuQc",
+              "videoSource": "youtube",
+              "videoDuration": "14:00",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "cs-2-3",
+              "title": "Operating Systems Concepts",
+              "description": "Processes, threads, and memory",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/operating-systems/",
+              "estimatedTime": 25,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programming-basics",
+      "title": "Programming Basics",
+      "description": "Learn fundamental programming concepts applicable to any language including variables, loops, and functions.",
+      "thumbnail": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=225&fit=crop",
+      "duration": "7 hours",
+      "difficulty": "Beginner",
+      "tags": ["Programming", "Fundamentals", "Logic"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-30",
+      "category": "Computer Fundamentals",
+      "minExperience": 0,
+      "maxExperience": 1,
+      "instructor": {
+        "name": "Robert Davis",
+        "title": "CS Educator"
+      },
+      "learningOutcomes": [
+        "Understand programming logic and algorithms",
+        "Master variables and data types",
+        "Learn control structures and loops",
+        "Write functions and modular code"
+      ],
+      "prerequisites": [],
+      "lessons": [
+        {
+          "id": "prog-lesson-1",
+          "title": "Programming Logic and Algorithms",
+          "description": "Learn to think like a programmer.",
+          "order": 1,
+          "estimatedDuration": "80 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "prog-1-1",
+              "title": "What is Programming?",
+              "description": "Introduction to programming concepts",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=zOjov-2OZ0E",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 28,
+              "order": 1
+            },
+            {
+              "id": "prog-1-2",
+              "title": "Problem Solving Techniques",
+              "description": "Algorithmic thinking",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=8hly31xKli0",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 22,
+              "order": 2
+            },
+            {
+              "id": "prog-1-3",
+              "title": "Introduction to Algorithms",
+              "description": "Basic algorithm concepts",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/fundamentals-of-algorithms/",
+              "estimatedTime": 30,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "prog-lesson-2",
+          "title": "Variables and Control Flow",
+          "description": "Master programming fundamentals.",
+          "order": 2,
+          "estimatedDuration": "90 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "prog-2-1",
+              "title": "Variables and Data Types",
+              "description": "Storing and using data",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=VygPr90vSEg",
+              "videoSource": "youtube",
+              "videoDuration": "22:00",
+              "estimatedTime": 30,
+              "order": 1
+            },
+            {
+              "id": "prog-2-2",
+              "title": "Loops and Conditionals",
+              "description": "Control flow in programming",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=JloLGV9DmtQ",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 28,
+              "order": 2
+            },
+            {
+              "id": "prog-2-3",
+              "title": "Functions and Modularity",
+              "description": "Writing reusable code",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/functions-in-programming/",
+              "estimatedTime": 32,
               "order": 3
             }
           ]
