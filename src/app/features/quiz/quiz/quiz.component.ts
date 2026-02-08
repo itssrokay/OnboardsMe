@@ -2,10 +2,10 @@ import { Component, OnInit, OnDestroy, inject, signal, computed } from '@angular
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuizService } from '../../../../core/services/quiz.service';
-import { CourseService } from '../../../../core/services/course.service';
-import { ProgressService } from '../../../../core/services/progress.service';
-import { Quiz, QuizQuestion, QuizAttempt } from '../../../../core/models/quiz.model';
+import { QuizService } from '../../../core/services/quiz.service';
+import { CourseService } from '../../../core/services/course.service';
+import { ProgressService } from '../../../core/services/progress.service';
+import { Quiz, QuizQuestion, QuizAttempt } from '../../../core/models/quiz.model';
 
 @Component({
   selector: 'app-quiz',

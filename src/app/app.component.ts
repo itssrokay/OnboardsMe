@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { HeaderComponent } from './core/components/header/header.component';
+import { HeaderComponent } from './core/header.component';
 
 @Component({
   selector: 'app-root',

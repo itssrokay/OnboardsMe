@@ -1,11 +1,11 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { QuizService } from '../../../../core/services/quiz.service';
-import { CourseService } from '../../../../core/services/course.service';
-import { ProgressService } from '../../../../core/services/progress.service';
-import { StorageService } from '../../../../core/services/storage.service';
-import { Quiz } from '../../../../core/models/quiz.model';
+import { QuizService } from '../../../core/services/quiz.service';
+import { CourseService } from '../../../core/services/course.service';
+import { ProgressService } from '../../../core/services/progress.service';
+import { StorageService } from '../../../core/services/storage.service';
+import { Quiz } from '../../../core/models/quiz.model';
 
 interface QuizCardData {
   quiz: Quiz;

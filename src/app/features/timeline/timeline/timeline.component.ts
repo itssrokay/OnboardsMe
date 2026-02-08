@@ -1,10 +1,10 @@
 import { Component, OnInit, inject, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { CourseService } from '../../../../core/services/course.service';
-import { ProgressService } from '../../../../core/services/progress.service';
-import { QuizService } from '../../../../core/services/quiz.service';
-import { StorageService } from '../../../../core/services/storage.service';
+import { CourseService } from '../../../core/services/course.service';
+import { ProgressService } from '../../../core/services/progress.service';
+import { QuizService } from '../../../core/services/quiz.service';
+import { StorageService } from '../../../core/services/storage.service';
 import { TimelineItemComponent } from '../timeline-item/timeline-item.component';
 
 export interface TimelineEvent {

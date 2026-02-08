@@ -1,10 +1,10 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CourseService } from '../../../../core/services/course.service';
-import { ProgressService } from '../../../../core/services/progress.service';
-import { QuizService } from '../../../../core/services/quiz.service';
-import { Course, Lesson } from '../../../../core/models/course.model';
+import { CourseService } from '../../../core/services/course.service';
+import { ProgressService } from '../../../core/services/progress.service';
+import { QuizService } from '../../../core/services/quiz.service';
+import { Course, Lesson } from '../../../core/models/course.model';
 
 @Component({
   selector: 'app-course-detail',

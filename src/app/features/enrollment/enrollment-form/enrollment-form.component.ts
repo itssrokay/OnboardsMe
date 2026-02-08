@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { EnrollmentService } from '../../../../core/services/enrollment.service';
+import { EnrollmentService } from '../../../core/services/enrollment.service';
 
 interface FieldConfig {
   key: string;

@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy, inject, signal, computed } from '@angular
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { CourseService } from '../../../../core/services/course.service';
-import { ProgressService } from '../../../../core/services/progress.service';
-import { Course, Lesson, LearningItem } from '../../../../core/models/course.model';
+import { CourseService } from '../../../core/services/course.service';
+import { ProgressService } from '../../../core/services/progress.service';
+import { Course, Lesson, LearningItem } from '../../../core/models/course.model';
 
 @Component({
   selector: 'app-lesson-viewer',

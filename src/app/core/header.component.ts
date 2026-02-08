@@ -1,8 +1,8 @@
 import { Component, inject, computed, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { EnrollmentService } from '../../services/enrollment.service';
-import { StorageService } from '../../services/storage.service';
+import { EnrollmentService } from './services/enrollment.service';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-header',

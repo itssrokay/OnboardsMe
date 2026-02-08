@@ -1,8 +1,8 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { QuizService } from '../../../../core/services/quiz.service';
-import { QuizResult, Quiz } from '../../../../core/models/quiz.model';
+import { QuizService } from '../../../core/services/quiz.service';
+import { QuizResult, Quiz } from '../../../core/models/quiz.model';
 
 @Component({
   selector: 'app-quiz-result',

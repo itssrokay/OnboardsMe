@@ -1,10 +1,10 @@
 import { Component, inject, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { CourseService } from '../../../../core/services/course.service';
-import { ProgressService } from '../../../../core/services/progress.service';
-import { StorageService } from '../../../../core/services/storage.service';
-import { Course } from '../../../../core/models/course.model';
+import { CourseService } from '../../../core/services/course.service';
+import { ProgressService } from '../../../core/services/progress.service';
+import { StorageService } from '../../../core/services/storage.service';
+import { Course } from '../../../core/models/course.model';
 
 @Component({
   selector: 'app-course-list',

@@ -1,9 +1,9 @@
 import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { EnrollmentService } from '../../../../core/services/enrollment.service';
-import { CourseService } from '../../../../core/services/course.service';
-import { Course } from '../../../../core/models/course.model';
+import { EnrollmentService } from '../../../core/services/enrollment.service';
+import { CourseService } from '../../../core/services/course.service';
+import { Course } from '../../../core/models/course.model';
 
 @Component({
   selector: 'app-course-selection',
