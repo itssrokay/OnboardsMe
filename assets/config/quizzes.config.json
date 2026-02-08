@@ -1,0 +1,894 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz-angular-fundamentals",
+      "courseId": "angular-fundamentals",
+      "title": "Angular Fundamentals Assessment",
+      "description": "Test your understanding of Angular core concepts",
+      "passingScore": 70,
+      "timeLimit": 30,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the purpose of Angular's dependency injection system?",
+          "options": [
+            "To manage component styles",
+            "To provide services and dependencies to components",
+            "To handle routing between pages",
+            "To compile TypeScript code"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Dependency Injection is a design pattern used to provide instances of classes (services) to components that need them, promoting reusability and testability.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "Standalone components in Angular require NgModules to work.",
+          "correctAnswer": "false",
+          "explanation": "Standalone components are self-contained and don't require NgModules. They import their dependencies directly.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "Which decorator is used to create a reusable component in Angular?",
+          "options": [
+            "@Injectable()",
+            "@Component()",
+            "@Directive()",
+            "@Module()"
+          ],
+          "correctAnswer": 1,
+          "explanation": "@Component() is the decorator used to define Angular components.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "single-choice",
+          "question": "What is the purpose of Angular Signals?",
+          "options": [
+            "To make HTTP requests",
+            "To handle reactive state management",
+            "To create animations",
+            "To define routes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Signals provide a reactive way to manage state in Angular applications, automatically updating the UI when values change.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "true-false",
+          "question": "Reactive Forms in Angular use the FormBuilder service to create form controls.",
+          "correctAnswer": "true",
+          "explanation": "FormBuilder is a service that provides convenient methods for creating FormGroup and FormControl instances.",
+          "points": 10
+        },
+        {
+          "id": "q6",
+          "type": "single-choice",
+          "question": "Which lifecycle hook is called when a component is initialized?",
+          "options": [
+            "ngOnDestroy()",
+            "ngOnChanges()",
+            "ngOnInit()",
+            "ngAfterViewInit()"
+          ],
+          "correctAnswer": 2,
+          "explanation": "ngOnInit() is called once after the first ngOnChanges() and is used for component initialization logic.",
+          "points": 10
+        },
+        {
+          "id": "q7",
+          "type": "true-false",
+          "question": "The @if and @for syntax in Angular templates is the new control flow syntax introduced in Angular 17.",
+          "correctAnswer": "true",
+          "explanation": "Angular 17 introduced a new built-in control flow syntax with @if, @for, and @switch, which is more performant than *ngIf and *ngFor.",
+          "points": 10
+        },
+        {
+          "id": "q8",
+          "type": "single-choice",
+          "question": "What is the purpose of Angular's HttpClient?",
+          "options": [
+            "To create HTTP servers",
+            "To make HTTP requests to backend APIs",
+            "To handle client-side routing",
+            "To manage browser cookies"
+          ],
+          "correctAnswer": 1,
+          "explanation": "HttpClient is Angular's service for making HTTP requests to communicate with backend APIs.",
+          "points": 10
+        },
+        {
+          "id": "q9",
+          "type": "single-choice",
+          "question": "Which of the following is used to protect routes in Angular?",
+          "options": [
+            "Interceptors",
+            "Guards",
+            "Resolvers",
+            "Pipes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Route Guards (like CanActivate, CanDeactivate) are used to control access to routes based on conditions.",
+          "points": 10
+        },
+        {
+          "id": "q10",
+          "type": "true-false",
+          "question": "Angular services should be decorated with @Injectable() to be used with dependency injection.",
+          "correctAnswer": "true",
+          "explanation": "The @Injectable() decorator marks a class as available for dependency injection.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-product-analysis",
+      "courseId": "product-analysis-basics",
+      "title": "Product Analysis Fundamentals Quiz",
+      "description": "Assess your understanding of product analysis concepts",
+      "passingScore": 70,
+      "timeLimit": 25,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the primary goal of product analysis?",
+          "options": [
+            "To write code faster",
+            "To understand user needs and improve product value",
+            "To reduce development costs",
+            "To increase team size"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Product analysis focuses on understanding user needs, market trends, and data to make informed decisions that improve product value.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "User personas are fictional representations of your target users based on research and data.",
+          "correctAnswer": "true",
+          "explanation": "User personas help teams empathize with users and make user-centered decisions.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "Which metric measures how many users continue to use a product over time?",
+          "options": [
+            "Conversion Rate",
+            "Retention Rate",
+            "Bounce Rate",
+            "Click-through Rate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Retention rate measures the percentage of users who return to use the product after their first visit.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "single-choice",
+          "question": "What is an MVP (Minimum Viable Product)?",
+          "options": [
+            "A fully featured product ready for market",
+            "A product with just enough features to gather validated learning",
+            "The most valuable player in product team",
+            "A prototype with maximum features"
+          ],
+          "correctAnswer": 1,
+          "explanation": "An MVP is a version of the product with just enough features to be usable by early customers who can provide feedback for future development.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "true-false",
+          "question": "A/B testing is a method to compare two versions of a feature to see which performs better.",
+          "correctAnswer": "true",
+          "explanation": "A/B testing involves showing different versions to different user segments and measuring which performs better on key metrics.",
+          "points": 10
+        },
+        {
+          "id": "q6",
+          "type": "single-choice",
+          "question": "What does 'Product-Market Fit' mean?",
+          "options": [
+            "When the product fits in the market budget",
+            "When the product satisfies a strong market demand",
+            "When the product team fits the company culture",
+            "When the product matches competitor features"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Product-Market Fit means creating a product that satisfies a strong market demand and solves a real problem for users.",
+          "points": 10
+        },
+        {
+          "id": "q7",
+          "type": "true-false",
+          "question": "User stories follow the format: 'As a [user type], I want [goal] so that [reason]'.",
+          "correctAnswer": "true",
+          "explanation": "This format helps teams understand who the feature is for, what they want to do, and why it matters.",
+          "points": 10
+        },
+        {
+          "id": "q8",
+          "type": "single-choice",
+          "question": "Which framework helps prioritize features based on value and effort?",
+          "options": [
+            "SWOT Analysis",
+            "RICE Framework",
+            "Waterfall Model",
+            "Agile Manifesto"
+          ],
+          "correctAnswer": 1,
+          "explanation": "RICE (Reach, Impact, Confidence, Effort) framework helps prioritize features by scoring them on these dimensions.",
+          "points": 10
+        },
+        {
+          "id": "q9",
+          "type": "single-choice",
+          "question": "What is the purpose of a product roadmap?",
+          "options": [
+            "To show the geographic locations of users",
+            "To outline the vision and direction of the product over time",
+            "To document past product failures",
+            "To track daily development tasks"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A product roadmap communicates the strategic direction and planned evolution of the product.",
+          "points": 10
+        },
+        {
+          "id": "q10",
+          "type": "true-false",
+          "question": "Qualitative data (like user interviews) is more important than quantitative data (like analytics).",
+          "correctAnswer": "false",
+          "explanation": "Both qualitative and quantitative data are important. Qualitative helps understand 'why', while quantitative helps understand 'what' and 'how much'.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-advanced-angular",
+      "courseId": "advanced-angular",
+      "title": "Advanced Angular Patterns Assessment",
+      "description": "Test your knowledge of advanced Angular concepts and patterns",
+      "passingScore": 70,
+      "timeLimit": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the primary benefit of using Angular Signals?",
+          "options": [
+            "Better SEO optimization",
+            "Fine-grained reactive state management with automatic UI updates",
+            "Faster HTTP requests",
+            "Improved routing performance"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Signals enable granular reactivity, tracking state usage precisely to optimize rendering and update only affected UI parts automatically, unlike traditional change detection.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "OnPush change detection strategy improves performance.",
+          "correctAnswer": "true",
+          "explanation": "OnPush limits checks to input reference changes or events, skipping unnecessary change detection cycles and boosting performance in complex apps.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "true-false",
+          "question": "Angular Signals integrate seamlessly with RxJS for advanced reactivity.",
+          "correctAnswer": "true",
+          "explanation": "Signals complement RxJS by providing synchronous reactivity that can combine with observables for hybrid reactive patterns in performance-critical apps.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "Using trackBy with ngFor is a key RxJS performance pattern.",
+          "correctAnswer": "false",
+          "explanation": "trackBy optimizes ngFor by reusing DOM elements based on unique keys during list changes, reducing recreations; it's a core performance technique alongside RxJS usage.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "Signals eliminate the need for manual change detection entirely.",
+          "options": [
+            "True in all cases",
+            "Only in OnPush components",
+            "They enable fine-grained automatic updates without manual intervention",
+            "False, Zone.js is still required"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Signals allow Angular to automatically detect and update only dependent UI via pull-based reactivity, minimizing manual change detection needs.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-user-research",
+      "courseId": "user-research-methods",
+      "title": "User Research Methods Assessment",
+      "description": "Evaluate your understanding of user research techniques",
+      "passingScore": 70,
+      "timeLimit": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "true-false",
+          "question": "User interviews are a qualitative method for in-depth insights.",
+          "correctAnswer": "true",
+          "explanation": "User interviews involve open-ended discussions to uncover experiences, needs, and behaviors that surveys might miss.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "single-choice",
+          "question": "Which is NOT a common usability testing method?",
+          "options": [
+            "Lab usability testing",
+            "Contextual inquiry",
+            "Guerrilla usability testing",
+            "Code review sessions"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Usability testing methods like lab, contextual, and guerrilla focus on observing user interactions; code review is a development practice, not research.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "true-false",
+          "question": "Research planning should start with defining goals and stage.",
+          "correctAnswer": "true",
+          "explanation": "Effective planning maps goals to methods—generative (e.g., interviews) early, evaluative (e.g., A/B tests) later—for targeted insights.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "Moderated usability testing provides richer feedback than unmoderated.",
+          "correctAnswer": "true",
+          "explanation": "Moderated sessions allow real-time probing and guidance, yielding deeper qualitative insights compared to independent unmoderated tests.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "true-false",
+          "question": "Tree testing evaluates information architecture.",
+          "correctAnswer": "true",
+          "explanation": "Tree testing assesses navigation and labeling by having users find items in a site map prototype without visuals.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-rxjs-mastery",
+      "courseId": "rxjs-mastery",
+      "title": "RxJS Mastery Assessment",
+      "description": "Test your knowledge of advanced RxJS patterns and error handling",
+      "passingScore": 70,
+      "timeLimit": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "true-false",
+          "question": "catchError operator handles errors by replacing with fallback.",
+          "correctAnswer": "true",
+          "explanation": "catchError catches errors in the observable chain and maps them to a new observable, like a fallback value or rethrow.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "single-choice",
+          "question": "retry operator resubscribes on error a specified number of times.",
+          "options": [
+            "Once only",
+            "Infinite times",
+            "Specified times by parameter",
+            "Never, use retryWhen"
+          ],
+          "correctAnswer": 2,
+          "explanation": "retry(n) automatically retries failed emissions up to n times, ideal for transient errors like network issues.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "true-false",
+          "question": "Observables must be subscribed to emit values.",
+          "correctAnswer": "true",
+          "explanation": "Observables are lazy; subscription triggers execution and value emission to observers.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "finalize executes regardless of complete or error.",
+          "correctAnswer": "true",
+          "explanation": "finalize runs cleanup code (e.g., unsubscribes) on completion, error, or unsubscription.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "true-false",
+          "question": "Higher-order observables require flattening operators like switchMap.",
+          "correctAnswer": "true",
+          "explanation": "Operators returning observables (e.g., switchMap) flatten inner streams to manage multiple observables effectively.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-requirements-engineering",
+      "courseId": "requirements-engineering",
+      "title": "Requirements Engineering Assessment",
+      "description": "Evaluate your mastery of requirements engineering practices",
+      "passingScore": 70,
+      "timeLimit": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "true-false",
+          "question": "SRS includes both functional and non-functional requirements.",
+          "correctAnswer": "true",
+          "explanation": "SRS details what the system does (functional) and qualities like performance, security (non-functional).",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "Traceability links requirements to design and tests.",
+          "correctAnswer": "true",
+          "explanation": "Bidirectional traceability ensures coverage, verifies implementation, and tracks changes across artifacts.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "true-false",
+          "question": "Change management starts with identification and evaluation.",
+          "correctAnswer": "true",
+          "explanation": "Process captures requests, assesses impact, approves, implements, and documents to control scope creep.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "single-choice",
+          "question": "Performance requirements in SRS are always dynamic.",
+          "options": [
+            "True",
+            "False, include static and dynamic",
+            "Only static",
+            "Not part of SRS"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Dynamic constraints execution behavior (e.g., response time); static do not (e.g., memory limits).",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "true-false",
+          "question": "Requirements documentation must be complete and verifiable.",
+          "correctAnswer": "true",
+          "explanation": "Good SRS is unambiguous, complete, verifiable, and traceable for successful development and validation.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-java-fundamentals",
+      "courseId": "java-fundamentals",
+      "title": "Java Fundamentals Assessment",
+      "description": "Test your understanding of Java basics and OOP",
+      "passingScore": 70,
+      "timeLimit": 25,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the main purpose of the Java Virtual Machine (JVM)?",
+          "options": [
+            "To compile Java code",
+            "To execute Java bytecode across different platforms",
+            "To debug Java applications",
+            "To manage memory only"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The JVM executes Java bytecode, enabling Java's 'write once, run anywhere' capability by providing platform independence.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "In Java, all methods must return a value.",
+          "correctAnswer": "false",
+          "explanation": "Methods with void return type don't return any value. Only methods with specific return types must return a value.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "Which of the following is a valid way to declare a variable in Java?",
+          "options": [
+            "int 123number;",
+            "int number;",
+            "int number-value;",
+            "int number value;"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Variable names must start with a letter, underscore, or dollar sign, and cannot contain spaces or hyphens. 'int number;' is the correct syntax.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "Java supports multiple inheritance through classes.",
+          "correctAnswer": "false",
+          "explanation": "Java does not support multiple inheritance with classes to avoid complexity. However, it supports multiple inheritance through interfaces.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "What is encapsulation in Java?",
+          "options": [
+            "Creating multiple classes",
+            "Bundling data and methods that operate on that data within a single unit",
+            "Inheriting properties from parent class",
+            "Overloading methods"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Encapsulation is wrapping data and code together in a single unit (class), typically using access modifiers to hide internal state.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-java-advanced",
+      "courseId": "java-advanced",
+      "title": "Advanced Java Assessment",
+      "description": "Test your knowledge of advanced Java concepts",
+      "passingScore": 75,
+      "timeLimit": 30,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the purpose of the Executor framework in Java?",
+          "options": [
+            "To compile Java code faster",
+            "To manage thread lifecycle and thread pooling efficiently",
+            "To handle exceptions automatically",
+            "To optimize memory usage"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The Executor framework provides high-level thread management, including thread pools, making concurrent programming easier and more efficient.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "Java Streams can only be used with collections.",
+          "correctAnswer": "false",
+          "explanation": "Streams can be created from various sources including collections, arrays, I/O channels, and even generated on-the-fly using Stream.generate() or Stream.iterate().",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "Which keyword is used to define a lambda expression parameter that shouldn't be changed?",
+          "options": [
+            "final (explicitly or effectively)",
+            "const",
+            "immutable",
+            "locked"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Lambda expressions can only access local variables that are final or effectively final to ensure thread safety and predictability.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "synchronized keyword in Java ensures that only one thread can execute a synchronized method at a time across all instances.",
+          "correctAnswer": "false",
+          "explanation": "Synchronized instance methods lock the object instance, allowing one thread per instance. For class-level locking, use synchronized static methods or synchronized(ClassName.class).",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "What does the Stream.collect() method do?",
+          "options": [
+            "Filters stream elements",
+            "Maps stream elements to new values",
+            "Accumulates stream elements into a result container",
+            "Sorts stream elements"
+          ],
+          "correctAnswer": 2,
+          "explanation": "collect() is a terminal operation that accumulates stream elements into a mutable result container like a List, Set, or Map using a Collector.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-python-fundamentals",
+      "courseId": "python-fundamentals",
+      "title": "Python Fundamentals Assessment",
+      "description": "Test your Python basics knowledge",
+      "passingScore": 70,
+      "timeLimit": 25,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the difference between a list and a tuple in Python?",
+          "options": [
+            "Lists are faster than tuples",
+            "Lists are mutable, tuples are immutable",
+            "Tuples can store more elements",
+            "There is no difference"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The key difference is mutability: lists can be modified after creation (mutable), while tuples cannot be changed once created (immutable).",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "Python uses indentation to define code blocks.",
+          "correctAnswer": "true",
+          "explanation": "Unlike many languages that use braces, Python uses indentation (spaces or tabs) to define code blocks, making code more readable.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "Which Python data structure would you use to store unique values?",
+          "options": [
+            "List",
+            "Dictionary",
+            "Set",
+            "Tuple"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A set is an unordered collection of unique elements. It automatically removes duplicates and provides fast membership testing.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "In Python, variables must be declared with a specific type before use.",
+          "correctAnswer": "false",
+          "explanation": "Python is dynamically typed, so you don't need to declare variable types explicitly. The type is inferred from the assigned value.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "What does the 'range(5)' function return in Python 3?",
+          "options": [
+            "A list [0, 1, 2, 3, 4]",
+            "A tuple (0, 1, 2, 3, 4)",
+            "A range object representing 0 to 4",
+            "The number 5"
+          ],
+          "correctAnswer": 2,
+          "explanation": "In Python 3, range() returns a range object (an immutable sequence type) rather than a list, making it more memory efficient.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-python-advanced",
+      "courseId": "python-advanced",
+      "title": "Advanced Python Assessment",
+      "description": "Test your advanced Python knowledge",
+      "passingScore": 75,
+      "timeLimit": 30,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is a decorator in Python?",
+          "options": [
+            "A function that adds visual styling to output",
+            "A function that modifies or enhances another function or class",
+            "A way to declare variables",
+            "A type of loop"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Decorators are functions that take another function as input and extend its behavior without modifying its source code, using the @decorator syntax.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "Python generators are more memory efficient than lists for large sequences.",
+          "correctAnswer": "true",
+          "explanation": "Generators use lazy evaluation, yielding one item at a time, while lists store all items in memory at once. This makes generators much more memory efficient.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "What keyword is used to define a coroutine in Python?",
+          "options": [
+            "async def",
+            "coroutine",
+            "thread def",
+            "parallel def"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Coroutines are defined using 'async def', enabling asynchronous programming with await expressions inside the function.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "The GIL (Global Interpreter Lock) in Python prevents true parallel execution of Python threads.",
+          "correctAnswer": "true",
+          "explanation": "The GIL allows only one thread to execute Python bytecode at a time, preventing true parallelism in CPU-bound tasks (though I/O-bound tasks can still benefit from threading).",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "What is the purpose of '__init__' method in a Python class?",
+          "options": [
+            "To delete an object",
+            "To initialize object attributes when an instance is created",
+            "To define class methods",
+            "To import modules"
+          ],
+          "correctAnswer": 1,
+          "explanation": "__init__ is the constructor method that initializes new object instances, setting up initial attribute values and performing setup operations.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-computer-fundamentals",
+      "courseId": "computer-fundamentals",
+      "title": "Computer Fundamentals Assessment",
+      "description": "Test your understanding of computer basics",
+      "passingScore": 70,
+      "timeLimit": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is the primary function of RAM in a computer?",
+          "options": [
+            "Long-term data storage",
+            "Temporary storage for data and programs currently in use",
+            "Processing calculations",
+            "Displaying graphics"
+          ],
+          "correctAnswer": 1,
+          "explanation": "RAM (Random Access Memory) provides fast, temporary storage for data and programs that the CPU is actively using. It's volatile and loses data when power is off.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "The CPU (Central Processing Unit) is responsible for storing all your files and documents.",
+          "correctAnswer": "false",
+          "explanation": "The CPU processes instructions and performs calculations. File storage is handled by storage devices like hard drives or SSDs.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "Which of the following is an example of an operating system?",
+          "options": [
+            "Microsoft Word",
+            "Google Chrome",
+            "Windows 11",
+            "Adobe Photoshop"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Windows 11 is an operating system that manages hardware and software resources. The others are application software that run on top of an OS.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "SSD (Solid State Drive) is faster than traditional HDD (Hard Disk Drive).",
+          "correctAnswer": "true",
+          "explanation": "SSDs use flash memory with no moving parts, providing much faster read/write speeds and lower latency compared to HDDs which use spinning magnetic platters.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "What does 'bit' stand for in computer terms?",
+          "options": [
+            "Binary digit",
+            "Basic integrated technology",
+            "Byte information transfer",
+            "Binary integer type"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A bit (binary digit) is the smallest unit of data in computing, representing either 0 or 1. Eight bits make up one byte.",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "quiz-programming-basics",
+      "courseId": "programming-basics",
+      "title": "Programming Basics Assessment",
+      "description": "Test your fundamental programming knowledge",
+      "passingScore": 70,
+      "timeLimit": 20,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "single-choice",
+          "question": "What is a variable in programming?",
+          "options": [
+            "A fixed value that never changes",
+            "A container for storing data values",
+            "A type of loop",
+            "A programming language"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A variable is a named container that stores data values which can be referenced and manipulated in a program. The value can change during program execution.",
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "true-false",
+          "question": "A 'for loop' is used to execute code repeatedly based on a condition.",
+          "correctAnswer": "true",
+          "explanation": "A for loop iterates over a sequence or repeats code a specific number of times, typically using a counter or iterator.",
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "single-choice",
+          "question": "What is the purpose of an 'if statement' in programming?",
+          "options": [
+            "To repeat code multiple times",
+            "To store data",
+            "To make decisions and execute code based on conditions",
+            "To define functions"
+          ],
+          "correctAnswer": 2,
+          "explanation": "An if statement allows conditional execution - code runs only when a specified condition is true, enabling decision-making in programs.",
+          "points": 10
+        },
+        {
+          "id": "q4",
+          "type": "true-false",
+          "question": "Functions help make code more modular and reusable.",
+          "correctAnswer": "true",
+          "explanation": "Functions encapsulate reusable blocks of code that perform specific tasks, making programs more organized, maintainable, and reducing code duplication.",
+          "points": 10
+        },
+        {
+          "id": "q5",
+          "type": "single-choice",
+          "question": "What is an algorithm?",
+          "options": [
+            "A programming language",
+            "A step-by-step procedure to solve a problem",
+            "A type of variable",
+            "A computer hardware component"
+          ],
+          "correctAnswer": 1,
+          "explanation": "An algorithm is a finite sequence of well-defined instructions to solve a problem or perform a computation. It's language-independent and focuses on the logic.",
+          "points": 10
+        }
+      ]
+    }
+  ]
+}

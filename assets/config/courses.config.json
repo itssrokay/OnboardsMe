@@ -1,0 +1,1581 @@
+{
+  "courses": [
+    {
+      "id": "angular-fundamentals",
+      "title": "Angular Fundamentals",
+      "description": "Learn the core concepts of Angular framework including components, templates, directives, and services.",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=225&fit=crop",
+      "duration": "8 hours",
+      "difficulty": "Beginner",
+      "tags": ["Angular", "TypeScript", "Frontend"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-15",
+      "category": "Angular",
+      "minExperience": 0,
+      "maxExperience": 2,
+      "instructor": {
+        "name": "Sarah Chen",
+        "title": "Senior Angular Developer"
+      },
+      "learningOutcomes": [
+        "Understand Angular architecture and core concepts",
+        "Build components with templates and styles",
+        "Use directives and pipes effectively",
+        "Implement services and dependency injection"
+      ],
+      "prerequisites": ["Basic HTML/CSS", "JavaScript fundamentals"],
+      "lessons": [
+        {
+          "id": "ang-lesson-1",
+          "title": "Introduction to Angular",
+          "description": "Get started with Angular - understand what it is, why use it, and set up your development environment.",
+          "order": 1,
+          "estimatedDuration": "45 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "ang-1-1",
+              "title": "What is Angular?",
+              "description": "Overview of Angular framework and its ecosystem",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=k5E2AVpwsko",
+              "videoSource": "youtube",
+              "videoDuration": "12:30",
+              "estimatedTime": 15,
+              "order": 1
+            },
+            {
+              "id": "ang-1-2",
+              "title": "Angular Official Documentation",
+              "description": "Explore the official Angular documentation for comprehensive guides",
+              "type": "url",
+              "url": "https://angular.dev/overview",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "ang-1-3",
+              "title": "Setting Up Your Environment",
+              "description": "Step-by-step guide to setting up Angular CLI and development tools",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 10,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "ang-lesson-2",
+          "title": "Components Deep Dive",
+          "description": "Master Angular components - the building blocks of any Angular application.",
+          "order": 2,
+          "estimatedDuration": "60 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "ang-2-1",
+              "title": "Creating Your First Component",
+              "description": "Learn to create and structure Angular components",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=23o0evRtrFI",
+              "videoSource": "youtube",
+              "videoDuration": "18:45",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "ang-2-2",
+              "title": "Component Lifecycle Hooks",
+              "description": "Understanding the component lifecycle in Angular",
+              "type": "url",
+              "url": "https://angular.dev/guide/components/lifecycle",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "ang-2-3",
+              "title": "Component Communication",
+              "description": "Input, Output, and other ways components communicate",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=I317BhehZKM",
+              "videoSource": "youtube",
+              "videoDuration": "15:20",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "ang-lesson-3",
+          "title": "Templates and Data Binding",
+          "description": "Learn Angular's powerful template syntax and data binding techniques.",
+          "order": 3,
+          "estimatedDuration": "50 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "ang-3-1",
+              "title": "Template Syntax Overview",
+              "description": "Comprehensive guide to Angular template syntax",
+              "type": "url",
+              "url": "https://angular.dev/guide/templates",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "ang-3-2",
+              "title": "Data Binding in Angular",
+              "description": "Property binding, event binding, and two-way binding explained",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=OXalunNNDVQ",
+              "videoSource": "youtube",
+              "videoDuration": "22:10",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "ang-3-3",
+              "title": "Template Reference Sheet",
+              "description": "Quick reference PDF for template syntax",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 5,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "ang-lesson-4",
+          "title": "Services and Dependency Injection",
+          "description": "Learn how to create services and use Angular's dependency injection system.",
+          "order": 4,
+          "estimatedDuration": "55 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "ang-4-1",
+              "title": "Introduction to Services",
+              "description": "What are services and why use them",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=tUfgjE3B1L0",
+              "videoSource": "youtube",
+              "videoDuration": "16:00",
+              "estimatedTime": 18,
+              "order": 1
+            },
+            {
+              "id": "ang-4-2",
+              "title": "Dependency Injection Guide",
+              "description": "Official guide on Angular's DI system",
+              "type": "url",
+              "url": "https://angular.dev/guide/di",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "ang-4-3",
+              "title": "HttpClient and API Calls",
+              "description": "Making HTTP requests in Angular",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=_05v0mrNLh0",
+              "videoSource": "youtube",
+              "videoDuration": "14:30",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-analysis-basics",
+      "title": "Product Analysis Basics",
+      "description": "Essential skills for product definition and analysis including requirements gathering and stakeholder management.",
+      "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop",
+      "duration": "6 hours",
+      "difficulty": "Beginner",
+      "tags": ["Product", "Analysis", "Requirements"],
+      "roles": ["Product Definition Analyst (PDA)"],
+      "addedDate": "2024-01-20",
+      "category": "Product Analysis",
+      "minExperience": 0,
+      "maxExperience": 3,
+      "instructor": {
+        "name": "Michael Brooks",
+        "title": "Lead Product Analyst"
+      },
+      "learningOutcomes": [
+        "Define clear product requirements",
+        "Conduct effective stakeholder interviews",
+        "Create user stories and acceptance criteria",
+        "Prioritize features using proven frameworks"
+      ],
+      "prerequisites": ["Basic business understanding"],
+      "lessons": [
+        {
+          "id": "pa-lesson-1",
+          "title": "Introduction to Product Analysis",
+          "description": "Understand the role of a Product Definition Analyst and key responsibilities.",
+          "order": 1,
+          "estimatedDuration": "40 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "pa-1-1",
+              "title": "What is Product Analysis?",
+              "description": "Overview of product analysis and its importance",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=XkdE8WtVmzM",
+              "videoSource": "youtube",
+              "videoDuration": "11:20",
+              "estimatedTime": 12,
+              "order": 1
+            },
+            {
+              "id": "pa-1-2",
+              "title": "Product Manager vs Product Analyst",
+              "description": "Understanding the differences and collaboration",
+              "type": "url",
+              "url": "https://www.productplan.com/learn/product-manager-vs-business-analyst/",
+              "estimatedTime": 15,
+              "order": 2
+            },
+            {
+              "id": "pa-1-3",
+              "title": "PDA Role Overview",
+              "description": "Comprehensive guide to the PDA role",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 10,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "pa-lesson-2",
+          "title": "Requirements Gathering",
+          "description": "Learn effective techniques for gathering and documenting requirements.",
+          "order": 2,
+          "estimatedDuration": "55 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "pa-2-1",
+              "title": "Requirements Elicitation Techniques",
+              "description": "Various methods to gather requirements effectively",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=7DEoprNs6ec",
+              "videoSource": "youtube",
+              "videoDuration": "18:45",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "pa-2-2",
+              "title": "Writing Good Requirements",
+              "description": "Best practices for writing clear requirements",
+              "type": "url",
+              "url": "https://www.atlassian.com/agile/product-management/requirements",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "pa-2-3",
+              "title": "Requirements Template",
+              "description": "Downloadable requirements document template",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "pa-lesson-3",
+          "title": "User Stories and Acceptance Criteria",
+          "description": "Master the art of writing user stories and defining acceptance criteria.",
+          "order": 3,
+          "estimatedDuration": "50 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "pa-3-1",
+              "title": "User Story Fundamentals",
+              "description": "How to write effective user stories",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=apOvF9NVguA",
+              "videoSource": "youtube",
+              "videoDuration": "14:30",
+              "estimatedTime": 15,
+              "order": 1
+            },
+            {
+              "id": "pa-3-2",
+              "title": "Acceptance Criteria Guide",
+              "description": "Writing clear and testable acceptance criteria",
+              "type": "url",
+              "url": "https://www.atlassian.com/agile/project-management/user-stories",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "pa-3-3",
+              "title": "INVEST Criteria for User Stories",
+              "description": "Validating user stories using INVEST",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=BfTvo1Wkpzs",
+              "videoSource": "youtube",
+              "videoDuration": "10:15",
+              "estimatedTime": 12,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced-angular",
+      "title": "Advanced Angular Patterns",
+      "description": "Master advanced patterns and best practices in Angular including state management, performance optimization, and architecture.",
+      "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=225&fit=crop",
+      "duration": "12 hours",
+      "difficulty": "Advanced",
+      "tags": ["Angular", "Architecture", "Best Practices"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-10",
+      "category": "Angular",
+      "minExperience": 2,
+      "instructor": {
+        "name": "David Martinez",
+        "title": "Angular Architect"
+      },
+      "learningOutcomes": [
+        "Implement advanced state management patterns",
+        "Optimize Angular application performance",
+        "Design scalable application architecture",
+        "Master RxJS operators for complex scenarios"
+      ],
+      "prerequisites": ["Angular Fundamentals", "TypeScript proficiency"],
+      "lessons": [
+        {
+          "id": "aa-lesson-1",
+          "title": "State Management with Signals",
+          "description": "Learn Angular's new Signals API for reactive state management.",
+          "order": 1,
+          "estimatedDuration": "70 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "aa-1-1",
+              "title": "Introduction to Signals",
+              "description": "Understanding Angular Signals and their benefits",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=oqYQG7QMdzw",
+              "videoSource": "youtube",
+              "videoDuration": "20:30",
+              "estimatedTime": 22,
+              "order": 1
+            },
+            {
+              "id": "aa-1-2",
+              "title": "Signals Documentation",
+              "description": "Official Angular Signals guide",
+              "type": "url",
+              "url": "https://angular.dev/guide/signals",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "aa-1-3",
+              "title": "Signals vs RxJS",
+              "description": "When to use Signals vs RxJS observables",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=iA6iyoantuo",
+              "videoSource": "youtube",
+              "videoDuration": "18:15",
+              "estimatedTime": 20,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "aa-lesson-2",
+          "title": "Performance Optimization",
+          "description": "Techniques to optimize Angular application performance.",
+          "order": 2,
+          "estimatedDuration": "65 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "aa-2-1",
+              "title": "Change Detection Strategies",
+              "description": "OnPush and other optimization techniques",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=CUxD91DWkGM",
+              "videoSource": "youtube",
+              "videoDuration": "22:00",
+              "estimatedTime": 24,
+              "order": 1
+            },
+            {
+              "id": "aa-2-2",
+              "title": "Lazy Loading Deep Dive",
+              "description": "Advanced lazy loading strategies",
+              "type": "url",
+              "url": "https://angular.dev/guide/ngmodules/lazy-loading",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "aa-2-3",
+              "title": "Performance Checklist",
+              "description": "Angular performance optimization checklist",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "aa-lesson-3",
+          "title": "Advanced RxJS Patterns",
+          "description": "Master complex RxJS patterns for real-world scenarios.",
+          "order": 3,
+          "estimatedDuration": "75 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "aa-3-1",
+              "title": "Higher-Order Observables",
+              "description": "Understanding switchMap, mergeMap, concatMap",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=Byttv3YpjQk",
+              "videoSource": "youtube",
+              "videoDuration": "25:30",
+              "estimatedTime": 28,
+              "order": 1
+            },
+            {
+              "id": "aa-3-2",
+              "title": "Error Handling in RxJS",
+              "description": "Robust error handling strategies",
+              "type": "url",
+              "url": "https://rxjs.dev/guide/operators",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "aa-3-3",
+              "title": "RxJS Operators Cheat Sheet",
+              "description": "Quick reference for common operators",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 10,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user-research-methods",
+      "title": "User Research Methods",
+      "description": "Learn effective user research techniques for product development including interviews, surveys, and usability testing.",
+      "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=225&fit=crop",
+      "duration": "10 hours",
+      "difficulty": "Intermediate",
+      "tags": ["Research", "UX", "Product"],
+      "roles": ["Product Definition Analyst (PDA)"],
+      "addedDate": "2024-01-18",
+      "category": "Product Analysis",
+      "minExperience": 1,
+      "instructor": {
+        "name": "Emily Watson",
+        "title": "UX Research Lead"
+      },
+      "learningOutcomes": [
+        "Plan and conduct user interviews",
+        "Design effective surveys",
+        "Perform usability testing",
+        "Synthesize and present research findings"
+      ],
+      "prerequisites": ["Product Analysis Basics"],
+      "lessons": [
+        {
+          "id": "ur-lesson-1",
+          "title": "Introduction to User Research",
+          "description": "Understand the importance and types of user research.",
+          "order": 1,
+          "estimatedDuration": "45 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "ur-1-1",
+              "title": "Why User Research Matters",
+              "description": "The value of user research in product development",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=WpzmOH0hrEM",
+              "videoSource": "youtube",
+              "videoDuration": "13:20",
+              "estimatedTime": 15,
+              "order": 1
+            },
+            {
+              "id": "ur-1-2",
+              "title": "Types of User Research",
+              "description": "Overview of qualitative and quantitative methods",
+              "type": "url",
+              "url": "https://www.nngroup.com/articles/which-ux-research-methods/",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "ur-1-3",
+              "title": "Research Planning Guide",
+              "description": "How to plan your research activities",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 10,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "ur-lesson-2",
+          "title": "User Interviews",
+          "description": "Learn to plan, conduct, and analyze user interviews.",
+          "order": 2,
+          "estimatedDuration": "60 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "ur-2-1",
+              "title": "Interview Techniques",
+              "description": "Best practices for conducting user interviews",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=Q3jxV7g_Y-I",
+              "videoSource": "youtube",
+              "videoDuration": "19:45",
+              "estimatedTime": 22,
+              "order": 1
+            },
+            {
+              "id": "ur-2-2",
+              "title": "Creating Interview Scripts",
+              "description": "How to prepare effective interview questions",
+              "type": "url",
+              "url": "https://www.nngroup.com/articles/user-interviews/",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "ur-2-3",
+              "title": "Interview Template",
+              "description": "Downloadable interview script template",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 10,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "ur-lesson-3",
+          "title": "Usability Testing",
+          "description": "Conduct effective usability tests to improve your product.",
+          "order": 3,
+          "estimatedDuration": "55 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "ur-3-1",
+              "title": "Usability Testing 101",
+              "description": "Introduction to usability testing methods",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=BrVnBdW6_rE",
+              "videoSource": "youtube",
+              "videoDuration": "16:30",
+              "estimatedTime": 18,
+              "order": 1
+            },
+            {
+              "id": "ur-3-2",
+              "title": "Planning Usability Tests",
+              "description": "Step-by-step guide to planning tests",
+              "type": "url",
+              "url": "https://www.usability.gov/how-to-and-tools/methods/usability-testing.html",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "ur-3-3",
+              "title": "Analyzing Test Results",
+              "description": "How to analyze and report usability findings",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=U9ZG19XTbd4",
+              "videoSource": "youtube",
+              "videoDuration": "14:15",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rxjs-mastery",
+      "title": "RxJS Mastery",
+      "description": "Deep dive into reactive programming with RxJS - from basics to advanced patterns.",
+      "thumbnail": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=225&fit=crop",
+      "duration": "15 hours",
+      "difficulty": "Advanced",
+      "tags": ["RxJS", "Reactive", "Async"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-05",
+      "category": "Angular",
+      "minExperience": 1,
+      "instructor": {
+        "name": "Alex Johnson",
+        "title": "Reactive Programming Expert"
+      },
+      "learningOutcomes": [
+        "Understand reactive programming concepts",
+        "Master RxJS operators",
+        "Handle complex async scenarios",
+        "Debug and test RxJS code"
+      ],
+      "prerequisites": ["JavaScript/TypeScript", "Basic async programming"],
+      "lessons": [
+        {
+          "id": "rx-lesson-1",
+          "title": "RxJS Fundamentals",
+          "description": "Learn the core concepts of RxJS and reactive programming.",
+          "order": 1,
+          "estimatedDuration": "60 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "rx-1-1",
+              "title": "What is Reactive Programming?",
+              "description": "Introduction to reactive programming paradigm",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=49dMGC1hM1o",
+              "videoSource": "youtube",
+              "videoDuration": "18:30",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "rx-1-2",
+              "title": "Observables and Observers",
+              "description": "Understanding the core RxJS concepts",
+              "type": "url",
+              "url": "https://rxjs.dev/guide/observable",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "rx-1-3",
+              "title": "Your First Observable",
+              "description": "Hands-on introduction to creating observables",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=Tux1nhBPl_w",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "rx-lesson-2",
+          "title": "Essential Operators",
+          "description": "Learn the most commonly used RxJS operators.",
+          "order": 2,
+          "estimatedDuration": "75 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "rx-2-1",
+              "title": "Transformation Operators",
+              "description": "map, filter, reduce, and more",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=PhggNGsSQyg",
+              "videoSource": "youtube",
+              "videoDuration": "24:00",
+              "estimatedTime": 26,
+              "order": 1
+            },
+            {
+              "id": "rx-2-2",
+              "title": "Combination Operators",
+              "description": "merge, concat, combineLatest explained",
+              "type": "url",
+              "url": "https://rxjs.dev/guide/operators",
+              "estimatedTime": 30,
+              "order": 2
+            },
+            {
+              "id": "rx-2-3",
+              "title": "RxJS Operators Visual Guide",
+              "description": "Interactive operator decision tree",
+              "type": "url",
+              "url": "https://rxjs.dev/operator-decision-tree",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "rx-lesson-3",
+          "title": "Error Handling and Testing",
+          "description": "Master error handling and testing RxJS code.",
+          "order": 3,
+          "estimatedDuration": "55 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "rx-3-1",
+              "title": "Error Handling Strategies",
+              "description": "catchError, retry, and error recovery",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=X7rmLILUJ1A",
+              "videoSource": "youtube",
+              "videoDuration": "16:45",
+              "estimatedTime": 18,
+              "order": 1
+            },
+            {
+              "id": "rx-3-2",
+              "title": "Testing with Marble Diagrams",
+              "description": "How to test RxJS code effectively",
+              "type": "url",
+              "url": "https://rxjs.dev/guide/testing/marble-testing",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "rx-3-3",
+              "title": "Debugging RxJS",
+              "description": "Tools and techniques for debugging",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=5Fzswvjxnag",
+              "videoSource": "youtube",
+              "videoDuration": "12:30",
+              "estimatedTime": 14,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requirements-engineering",
+      "title": "Requirements Engineering",
+      "description": "Master the art of requirements gathering, documentation, and management for successful projects.",
+      "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=225&fit=crop",
+      "duration": "9 hours",
+      "difficulty": "Intermediate",
+      "tags": ["Requirements", "Documentation", "Analysis"],
+      "roles": ["Product Definition Analyst (PDA)"],
+      "addedDate": "2024-01-22",
+      "category": "Requirements",
+      "minExperience": 0,
+      "instructor": {
+        "name": "Jennifer Lee",
+        "title": "Business Analysis Manager"
+      },
+      "learningOutcomes": [
+        "Apply requirements engineering best practices",
+        "Create comprehensive requirement documents",
+        "Manage requirements changes effectively",
+        "Ensure requirements traceability"
+      ],
+      "prerequisites": ["Product Analysis Basics"],
+      "lessons": [
+        {
+          "id": "re-lesson-1",
+          "title": "Requirements Engineering Overview",
+          "description": "Introduction to requirements engineering discipline.",
+          "order": 1,
+          "estimatedDuration": "50 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "re-1-1",
+              "title": "What is Requirements Engineering?",
+              "description": "Overview of the discipline and its importance",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=TlaEK8lqL9o",
+              "videoSource": "youtube",
+              "videoDuration": "15:30",
+              "estimatedTime": 17,
+              "order": 1
+            },
+            {
+              "id": "re-1-2",
+              "title": "Requirements Life Cycle",
+              "description": "Understanding the requirements process",
+              "type": "url",
+              "url": "https://www.iiba.org/standards-and-resources/babok/",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "re-1-3",
+              "title": "RE Body of Knowledge",
+              "description": "Overview of IREB CPRE foundation",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 12,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "re-lesson-2",
+          "title": "Requirements Documentation",
+          "description": "Learn to create clear and comprehensive requirements documents.",
+          "order": 2,
+          "estimatedDuration": "65 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "re-2-1",
+              "title": "SRS Document Structure",
+              "description": "How to structure a requirements specification",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=q-c91f8xvYA",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 22,
+              "order": 1
+            },
+            {
+              "id": "re-2-2",
+              "title": "Writing Quality Requirements",
+              "description": "Characteristics of good requirements",
+              "type": "url",
+              "url": "https://www.modernanalyst.com/Resources/Articles/tabid/115/ID/1750/Writing-Good-Requirements.aspx",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "re-2-3",
+              "title": "SRS Template",
+              "description": "Downloadable SRS document template",
+              "type": "pdf",
+              "pdfUrl": "https://www.w3.org/WAI/WCAG21/Techniques/pdf/pdf-notes-basicslides.pdf",
+              "pdfSource": "external",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "re-lesson-3",
+          "title": "Requirements Management",
+          "description": "Learn to manage requirements throughout the project lifecycle.",
+          "order": 3,
+          "estimatedDuration": "55 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "re-3-1",
+              "title": "Change Management",
+              "description": "Handling requirements changes",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=ks9-9_vVpGk",
+              "videoSource": "youtube",
+              "videoDuration": "14:30",
+              "estimatedTime": 16,
+              "order": 1
+            },
+            {
+              "id": "re-3-2",
+              "title": "Requirements Traceability",
+              "description": "Maintaining traceability throughout the project",
+              "type": "url",
+              "url": "https://www.jamasoftware.com/requirements-management-guide/requirements-traceability/",
+              "estimatedTime": 22,
+              "order": 2
+            },
+            {
+              "id": "re-3-3",
+              "title": "Tools for Requirements Management",
+              "description": "Overview of popular RM tools",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=EwHHi-Jh6cg",
+              "videoSource": "youtube",
+              "videoDuration": "16:00",
+              "estimatedTime": 17,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-fundamentals",
+      "title": "Java Fundamentals",
+      "description": "Learn Java programming from scratch including syntax, OOP concepts, and core libraries.",
+      "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=225&fit=crop",
+      "duration": "10 hours",
+      "difficulty": "Beginner",
+      "tags": ["Java", "Programming", "Backend"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-25",
+      "category": "Java",
+      "minExperience": 0,
+      "maxExperience": 2,
+      "instructor": {
+        "name": "Michael Brown",
+        "title": "Senior Java Developer"
+      },
+      "learningOutcomes": [
+        "Understand Java syntax and basic programming concepts",
+        "Master object-oriented programming in Java",
+        "Work with Java collections and data structures",
+        "Build simple Java applications"
+      ],
+      "prerequisites": ["Basic computer skills"],
+      "lessons": [
+        {
+          "id": "java-lesson-1",
+          "title": "Introduction to Java",
+          "description": "Get started with Java programming language.",
+          "order": 1,
+          "estimatedDuration": "60 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "java-1-1",
+              "title": "What is Java?",
+              "description": "Overview of Java and its ecosystem",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=eIrMbAQSU34",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "java-1-2",
+              "title": "Java Official Documentation",
+              "description": "Explore Java documentation",
+              "type": "url",
+              "url": "https://docs.oracle.com/en/java/",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "java-1-3",
+              "title": "Setting Up Java Development Environment",
+              "description": "Install JDK and IDE",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=IJ-PJbvJBGs",
+              "videoSource": "youtube",
+              "videoDuration": "12:30",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "java-lesson-2",
+          "title": "Object-Oriented Programming in Java",
+          "description": "Master OOP concepts in Java.",
+          "order": 2,
+          "estimatedDuration": "90 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "java-2-1",
+              "title": "Classes and Objects",
+              "description": "Learn about Java classes and objects",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=IUqKuGNasdM",
+              "videoSource": "youtube",
+              "videoDuration": "25:00",
+              "estimatedTime": 30,
+              "order": 1
+            },
+            {
+              "id": "java-2-2",
+              "title": "Inheritance and Polymorphism",
+              "description": "Understanding OOP principles",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=9JpNY-XAseg",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "java-2-3",
+              "title": "Java OOP Best Practices",
+              "description": "Design patterns and best practices",
+              "type": "url",
+              "url": "https://www.baeldung.com/java-oop",
+              "estimatedTime": 35,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-advanced",
+      "title": "Advanced Java Programming",
+      "description": "Master advanced Java concepts including concurrency, streams, and enterprise patterns.",
+      "thumbnail": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=225&fit=crop",
+      "duration": "14 hours",
+      "difficulty": "Advanced",
+      "tags": ["Java", "Advanced", "Enterprise"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-26",
+      "category": "Java",
+      "minExperience": 2,
+      "instructor": {
+        "name": "Michael Brown",
+        "title": "Senior Java Developer"
+      },
+      "learningOutcomes": [
+        "Master Java concurrency and multithreading",
+        "Implement advanced design patterns",
+        "Work with Java Streams and Lambdas",
+        "Build scalable enterprise applications"
+      ],
+      "prerequisites": ["Java Fundamentals", "OOP concepts"],
+      "lessons": [
+        {
+          "id": "java-adv-lesson-1",
+          "title": "Concurrency and Multithreading",
+          "description": "Master concurrent programming in Java.",
+          "order": 1,
+          "estimatedDuration": "120 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "java-adv-1-1",
+              "title": "Java Threads Fundamentals",
+              "description": "Understanding threads and concurrency",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=r_MbozD32eo",
+              "videoSource": "youtube",
+              "videoDuration": "30:00",
+              "estimatedTime": 40,
+              "order": 1
+            },
+            {
+              "id": "java-adv-1-2",
+              "title": "Executors and Thread Pools",
+              "description": "Managing threads efficiently",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=6Oo-9Can3H8",
+              "videoSource": "youtube",
+              "videoDuration": "25:00",
+              "estimatedTime": 35,
+              "order": 2
+            },
+            {
+              "id": "java-adv-1-3",
+              "title": "Concurrency Best Practices",
+              "description": "Thread safety and synchronization",
+              "type": "url",
+              "url": "https://www.baeldung.com/java-concurrency",
+              "estimatedTime": 45,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "java-adv-lesson-2",
+          "title": "Streams and Functional Programming",
+          "description": "Master Java Streams API and functional concepts.",
+          "order": 2,
+          "estimatedDuration": "90 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "java-adv-2-1",
+              "title": "Introduction to Streams",
+              "description": "Understanding Java Streams API",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=t1-YZ6bF-g0",
+              "videoSource": "youtube",
+              "videoDuration": "28:00",
+              "estimatedTime": 35,
+              "order": 1
+            },
+            {
+              "id": "java-adv-2-2",
+              "title": "Lambda Expressions",
+              "description": "Functional programming in Java",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=tj5sLSFjVj4",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 30,
+              "order": 2
+            },
+            {
+              "id": "java-adv-2-3",
+              "title": "Stream Operations and Collectors",
+              "description": "Advanced stream processing",
+              "type": "url",
+              "url": "https://www.baeldung.com/java-streams",
+              "estimatedTime": 25,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-fundamentals",
+      "title": "Python Fundamentals",
+      "description": "Learn Python programming from basics to intermediate concepts including data structures and libraries.",
+      "thumbnail": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=225&fit=crop",
+      "duration": "9 hours",
+      "difficulty": "Beginner",
+      "tags": ["Python", "Programming", "Scripting"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-27",
+      "category": "Python",
+      "minExperience": 0,
+      "maxExperience": 2,
+      "instructor": {
+        "name": "Lisa Anderson",
+        "title": "Python Developer"
+      },
+      "learningOutcomes": [
+        "Understand Python syntax and core concepts",
+        "Work with Python data structures",
+        "Use popular Python libraries",
+        "Build simple Python applications"
+      ],
+      "prerequisites": ["Basic programming knowledge"],
+      "lessons": [
+        {
+          "id": "py-lesson-1",
+          "title": "Getting Started with Python",
+          "description": "Introduction to Python programming language.",
+          "order": 1,
+          "estimatedDuration": "50 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "py-1-1",
+              "title": "Why Python?",
+              "description": "Overview of Python and its uses",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=Y8Tko2YC5hA",
+              "videoSource": "youtube",
+              "videoDuration": "12:00",
+              "estimatedTime": 15,
+              "order": 1
+            },
+            {
+              "id": "py-1-2",
+              "title": "Python Official Documentation",
+              "description": "Explore Python docs",
+              "type": "url",
+              "url": "https://docs.python.org/3/",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "py-1-3",
+              "title": "Setting Up Python Environment",
+              "description": "Install Python and setup IDE",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+              "videoSource": "youtube",
+              "videoDuration": "10:00",
+              "estimatedTime": 15,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "py-lesson-2",
+          "title": "Python Data Structures",
+          "description": "Master Python lists, dictionaries, and more.",
+          "order": 2,
+          "estimatedDuration": "75 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "py-2-1",
+              "title": "Lists and Tuples",
+              "description": "Working with Python sequences",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=W8KRzm-HUcc",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 25,
+              "order": 1
+            },
+            {
+              "id": "py-2-2",
+              "title": "Dictionaries and Sets",
+              "description": "Understanding Python mappings",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=daefaLgNkw0",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "py-2-3",
+              "title": "Data Structure Best Practices",
+              "description": "Choosing the right data structure",
+              "type": "url",
+              "url": "https://realpython.com/python-data-structures/",
+              "estimatedTime": 30,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python-advanced",
+      "title": "Advanced Python Programming",
+      "description": "Master advanced Python concepts including decorators, generators, async programming, and more.",
+      "thumbnail": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=225&fit=crop",
+      "duration": "13 hours",
+      "difficulty": "Advanced",
+      "tags": ["Python", "Advanced", "Async"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-28",
+      "category": "Python",
+      "minExperience": 2,
+      "instructor": {
+        "name": "Lisa Anderson",
+        "title": "Python Developer"
+      },
+      "learningOutcomes": [
+        "Master Python decorators and metaclasses",
+        "Implement asynchronous programming",
+        "Optimize Python code for performance",
+        "Build scalable Python applications"
+      ],
+      "prerequisites": ["Python Fundamentals", "OOP in Python"],
+      "lessons": [
+        {
+          "id": "py-adv-lesson-1",
+          "title": "Decorators and Generators",
+          "description": "Advanced Python patterns and techniques.",
+          "order": 1,
+          "estimatedDuration": "100 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "py-adv-1-1",
+              "title": "Understanding Decorators",
+              "description": "Function and class decorators",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=FsAPt_9Bf3U",
+              "videoSource": "youtube",
+              "videoDuration": "25:00",
+              "estimatedTime": 35,
+              "order": 1
+            },
+            {
+              "id": "py-adv-1-2",
+              "title": "Generators and Iterators",
+              "description": "Lazy evaluation in Python",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=bD05uGo_sVI",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 30,
+              "order": 2
+            },
+            {
+              "id": "py-adv-1-3",
+              "title": "Advanced Patterns",
+              "description": "Context managers and more",
+              "type": "url",
+              "url": "https://realpython.com/python-iterators-iterables/",
+              "estimatedTime": 35,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "py-adv-lesson-2",
+          "title": "Asynchronous Programming",
+          "description": "Master async/await and concurrent programming.",
+          "order": 2,
+          "estimatedDuration": "95 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "py-adv-2-1",
+              "title": "Async/Await Basics",
+              "description": "Introduction to asyncio",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=t5Bo1Je9EmE",
+              "videoSource": "youtube",
+              "videoDuration": "30:00",
+              "estimatedTime": 40,
+              "order": 1
+            },
+            {
+              "id": "py-adv-2-2",
+              "title": "Concurrent Programming",
+              "description": "Threading vs multiprocessing",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=IEEhzQoKtQU",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 25,
+              "order": 2
+            },
+            {
+              "id": "py-adv-2-3",
+              "title": "Asyncio Best Practices",
+              "description": "Building async applications",
+              "type": "url",
+              "url": "https://realpython.com/async-io-python/",
+              "estimatedTime": 30,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "computer-fundamentals",
+      "title": "Computer Fundamentals",
+      "description": "Essential computer science concepts for beginners including hardware, software, and operating systems.",
+      "thumbnail": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=225&fit=crop",
+      "duration": "6 hours",
+      "difficulty": "Beginner",
+      "tags": ["Fundamentals", "Computer Science", "Basics"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-29",
+      "category": "Computer Fundamentals",
+      "minExperience": 0,
+      "maxExperience": 1,
+      "instructor": {
+        "name": "Robert Davis",
+        "title": "CS Educator"
+      },
+      "learningOutcomes": [
+        "Understand how computers work",
+        "Learn about operating systems",
+        "Grasp basic networking concepts",
+        "Understand file systems and data storage"
+      ],
+      "prerequisites": [],
+      "lessons": [
+        {
+          "id": "cs-lesson-1",
+          "title": "How Computers Work",
+          "description": "Understanding computer hardware and architecture.",
+          "order": 1,
+          "estimatedDuration": "60 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "cs-1-1",
+              "title": "Computer Hardware Basics",
+              "description": "CPU, RAM, Storage explained",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=AkFi90lZmXA",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 20,
+              "order": 1
+            },
+            {
+              "id": "cs-1-2",
+              "title": "How CPUs Work",
+              "description": "Understanding processors",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=cNN_tTXABUA",
+              "videoSource": "youtube",
+              "videoDuration": "12:00",
+              "estimatedTime": 18,
+              "order": 2
+            },
+            {
+              "id": "cs-1-3",
+              "title": "Computer Architecture Guide",
+              "description": "Comprehensive overview",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/",
+              "estimatedTime": 22,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "cs-lesson-2",
+          "title": "Operating Systems Basics",
+          "description": "Learn about operating systems and how they work.",
+          "order": 2,
+          "estimatedDuration": "70 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "cs-2-1",
+              "title": "What is an Operating System?",
+              "description": "OS fundamentals",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=26QPDBe-NB8",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 25,
+              "order": 1
+            },
+            {
+              "id": "cs-2-2",
+              "title": "File Systems Explained",
+              "description": "How data is stored",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=BV0-EPUYuQc",
+              "videoSource": "youtube",
+              "videoDuration": "14:00",
+              "estimatedTime": 20,
+              "order": 2
+            },
+            {
+              "id": "cs-2-3",
+              "title": "Operating Systems Concepts",
+              "description": "Processes, threads, and memory",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/operating-systems/",
+              "estimatedTime": 25,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programming-basics",
+      "title": "Programming Basics",
+      "description": "Learn fundamental programming concepts applicable to any language including variables, loops, and functions.",
+      "thumbnail": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=225&fit=crop",
+      "duration": "7 hours",
+      "difficulty": "Beginner",
+      "tags": ["Programming", "Fundamentals", "Logic"],
+      "roles": ["Developer"],
+      "addedDate": "2024-01-30",
+      "category": "Computer Fundamentals",
+      "minExperience": 0,
+      "maxExperience": 1,
+      "instructor": {
+        "name": "Robert Davis",
+        "title": "CS Educator"
+      },
+      "learningOutcomes": [
+        "Understand programming logic and algorithms",
+        "Master variables and data types",
+        "Learn control structures and loops",
+        "Write functions and modular code"
+      ],
+      "prerequisites": [],
+      "lessons": [
+        {
+          "id": "prog-lesson-1",
+          "title": "Programming Logic and Algorithms",
+          "description": "Learn to think like a programmer.",
+          "order": 1,
+          "estimatedDuration": "80 mins",
+          "isFree": true,
+          "learningItems": [
+            {
+              "id": "prog-1-1",
+              "title": "What is Programming?",
+              "description": "Introduction to programming concepts",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=zOjov-2OZ0E",
+              "videoSource": "youtube",
+              "videoDuration": "20:00",
+              "estimatedTime": 28,
+              "order": 1
+            },
+            {
+              "id": "prog-1-2",
+              "title": "Problem Solving Techniques",
+              "description": "Algorithmic thinking",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=8hly31xKli0",
+              "videoSource": "youtube",
+              "videoDuration": "15:00",
+              "estimatedTime": 22,
+              "order": 2
+            },
+            {
+              "id": "prog-1-3",
+              "title": "Introduction to Algorithms",
+              "description": "Basic algorithm concepts",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/fundamentals-of-algorithms/",
+              "estimatedTime": 30,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "id": "prog-lesson-2",
+          "title": "Variables and Control Flow",
+          "description": "Master programming fundamentals.",
+          "order": 2,
+          "estimatedDuration": "90 mins",
+          "isFree": false,
+          "learningItems": [
+            {
+              "id": "prog-2-1",
+              "title": "Variables and Data Types",
+              "description": "Storing and using data",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=VygPr90vSEg",
+              "videoSource": "youtube",
+              "videoDuration": "22:00",
+              "estimatedTime": 30,
+              "order": 1
+            },
+            {
+              "id": "prog-2-2",
+              "title": "Loops and Conditionals",
+              "description": "Control flow in programming",
+              "type": "video",
+              "videoUrl": "https://www.youtube.com/watch?v=JloLGV9DmtQ",
+              "videoSource": "youtube",
+              "videoDuration": "18:00",
+              "estimatedTime": 28,
+              "order": 2
+            },
+            {
+              "id": "prog-2-3",
+              "title": "Functions and Modularity",
+              "description": "Writing reusable code",
+              "type": "url",
+              "url": "https://www.geeksforgeeks.org/functions-in-programming/",
+              "estimatedTime": 32,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
