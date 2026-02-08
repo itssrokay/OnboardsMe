@@ -68,7 +68,6 @@ interface Course {
 ```
 
 ```json
-// Actual JSON Configuration (src/assets/config/courses.config.json)
 {
   "courses": [
     {
@@ -137,7 +136,6 @@ src/app/features/
 └── onboarding/    # Welcome portal
 ```
 
-Each feature is self-contained. No deep nesting of components folders - if it's in the `dashboard` folder, we know it's a component.
 
 ## Angular Concepts Used
 
