@@ -314,4 +314,189 @@ Each course in `courses.config.json` has a `roles` array:
 
 ---
 
+## 2026-02-04 - Implemented Progress Dashboard Module (4.4)
+
+### What Was Built
+Complete progress dashboard with smart/presentational component separation, OnPush change detection, and computed signals for all derived data.
+
+### Files Created
+
+#### Smart Container Component
+- `src/app/features/dashboard/components/dashboard/dashboard.component.ts` - Main container (254 lines)
+- `src/app/features/dashboard/components/dashboard/dashboard.component.html` - Dashboard layout
+- `src/app/features/dashboard/components/dashboard/dashboard.component.scss` - Dashboard styles
+
+**Smart Component Features:**
+- Handles all data fetching and business logic
+- Aggregates data from multiple services (Course, Progress, Quiz, Storage)
+- Computes derived metrics using signals
+- Provides event handlers for navigation
+- Implements wait logic for async service loading
+
+#### Presentational Components (OnPush)
+
+**Dashboard Stats Component:**
+- `src/app/features/dashboard/components/dashboard-stats/dashboard-stats.component.ts`
+- `src/app/features/dashboard/components/dashboard-stats/dashboard-stats.component.html`
+- `src/app/features/dashboard/components/dashboard-stats/dashboard-stats.component.scss`
+
+Features:
+- Circular progress ring with SVG animation
+- Four stat cards: In Progress, Completed, Quizzes Passed, Average Quiz Score
+- Pure presentation - only receives data via @Input
+- OnPush change detection for optimal performance
+
+**Dashboard Course Card Component:**
+- `src/app/features/dashboard/components/dashboard-course-card/dashboard-course-card.component.ts`
+- `src/app/features/dashboard/components/dashboard-course-card/dashboard-course-card.component.html`
+- `src/app/features/dashboard/components/dashboard-course-card/dashboard-course-card.component.scss`
+
+Features:
+- Course thumbnail with status badge
+- Detailed progress tracking (lessons/items completed)
+- Visual progress bar
+- Quiz status indicator
+- Smart action button based on course state
+- Pure presentation with @Output events
+- OnPush change detection
+
+### Files Modified
+- `src/app/app.routes.ts` - Updated dashboard route to load new component
+
+### Dashboard Features Implemented
+
+#### 1. Overall Course Completion Percentage
+- **Circular Progress Ring** with animated SVG
+- Shows percentage of courses completed (completed ÷ total courses for role)
+- Color-coded: Starting (red), Fair (orange), Good (yellow), Excellent (green)
+- Displays count: "X of Y courses completed"
+
+#### 2. Course-wise Completion Status
+Each course card displays:
+- **Lessons Completed:** X/Y lessons
+- **Items Completed:** X/Y items
+- **Progress Percentage:** Visual bar + percentage
+- **Status Badge:** Not Started, In Progress, Completed
+- **Quiz Status:** Locked, Available, Failed (X%), Passed (X%)
+
+#### 3. Quiz Scores
+- **Total Quizzes Passed/Failed** stat card
+- **Average Quiz Score** across all attempted quizzes
+- **Per-course quiz status** with scores on each card
+
+#### 4. Navigation to Incomplete Items
+Smart action buttons based on state:
+- **"Start Course"** - Not started courses
+- **"Continue Learning"** - In progress (navigates to last viewed lesson/item)
+- **"Take Quiz"** - Course complete, quiz not attempted
+- **"Retake Quiz"** - Quiz failed
+- **"View Results"** - Quiz passed
+
+All buttons navigate directly to appropriate pages.
+
+### Technical Implementation
+
+#### Computed Signals (Derived Data)
+```typescript
+// Overall metrics
+overallCompletion = computed(() => { /* calc % */ });
+totalQuizzesPassed = computed(() => { /* count */ });
+averageQuizScore = computed(() => { /* avg */ });
+
+// Course progress data
+courseProgressData = computed<CourseProgressData[]>(() => {
+  // Combines data from multiple services
+  // Calculates all derived metrics
+  // Sorts by status and last viewed
+});
+
+// Filtered views
+inProgressCourses = computed(() => /* filter */);
+completedCourses = computed(() => /* filter */);
+notStartedCourses = computed(() => /* filter */);
+```
+
+#### Smart vs Presentational Separation
+- **Smart Component (DashboardComponent):** 
+  - Injects all services
+  - Computes all derived data
+  - Handles navigation logic
+  - Manages loading state
+  
+- **Presentational Components:**
+  - Receive data via @Input
+  - Emit events via @Output
+  - No service dependencies
+  - OnPush change detection
+  - Pure presentation logic only
+
+#### Course Progress Calculation
+- **Lessons Completed:** Lesson complete if ALL items in it are complete
+- **Items Completed:** Direct count from progress service
+- **Percentage:** Calculated by ProgressService
+- **Status:** Not Started (0%), In Progress (1-99%), Completed (100%)
+
+#### Quiz Status Logic
+```typescript
+if (courseProgress < 100%) → Quiz Locked
+else if (passed) → Quiz Passed (show best score)
+else if (attempted) → Quiz Failed (show best score)
+else → Quiz Available
+```
+
+### User Experience
+
+**Dashboard Sections:**
+1. **Header** - Welcome message with user name and role badge
+2. **Stats Overview** - Overall completion + 4 stat cards
+3. **Continue Learning** - In-progress courses (sorted by last viewed)
+4. **Start Learning** - Not started courses
+5. **Completed** - Finished courses with quiz results
+
+**Course Card Layout:**
+- Course thumbnail with status overlay
+- Title + difficulty badge
+- Description (2-line clamp)
+- Progress stats section (lessons, items)
+- Animated progress bar
+- Quiz status indicator
+- Action button (changes based on state)
+
+**Responsive Design:**
+- Desktop: Multi-column grid layout
+- Mobile: Single column, stacked stats
+- Touch-friendly buttons and cards
+
+### Data Flow
+```
+Services (Course, Progress, Quiz, Storage)
+    ↓ (inject)
+DashboardComponent (Smart)
+    ↓ (computed signals)
+Derived Data (overall %, course progress, quiz scores)
+    ↓ (@Input)
+Presentational Components (Stats, Course Cards)
+    ↓ (@Output events)
+Navigation Handlers in Smart Component
+```
+
+### Performance Optimizations
+- **OnPush Change Detection** on all presentational components
+- **Computed Signals** prevent unnecessary recalculations
+- **Lazy Loading** via route-based code splitting
+- **Async Wait Logic** prevents rendering before data loads
+
+### Build Status
+✅ Build successful - 295.30 kB initial bundle
+✅ Dashboard component: 32.87 kB lazy loaded
+✅ No linter errors
+✅ All computed signals working correctly
+✅ OnPush change detection applied to presentational components
+✅ Smart/presentational separation implemented
+
+### Route
+`/dashboard` → Progress Dashboard (requires enrollment)
+
+---
+
 ✅ Work log updated.

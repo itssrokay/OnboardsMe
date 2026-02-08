@@ -29,10 +29,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/quiz/components/quiz-list/quiz-list.component').then(m => m.QuizListComponent),
     canActivate: [enrollmentGuard]
   },
-  // Dashboard route (placeholder for now)
+  // Dashboard route
   {
     path: 'dashboard',
-    loadComponent: () => import('./features/home/components/home/home.component').then(m => m.HomeComponent),
+    loadComponent: () => import('./features/dashboard/components/dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [enrollmentGuard]
   },
   // Course routes

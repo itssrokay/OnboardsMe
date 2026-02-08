@@ -1,0 +1,82 @@
+<div class="stats-container">
+  <!-- Overall Completion Circle -->
+  <div class="overall-completion-card">
+    <div class="completion-circle" [class]="getCompletionClass()">
+      <svg viewBox="0 0 120 120">
+        <circle class="circle-bg" cx="60" cy="60" r="54" />
+        <circle 
+          class="circle-progress" 
+          cx="60" 
+          cy="60" 
+          r="54"
+          [style.strokeDasharray]="getCircumference()"
+          [style.strokeDashoffset]="getStrokeDashoffset()"
+        />
+      </svg>
+      <div class="completion-text">
+        <span class="percentage">{{ overallCompletion }}%</span>
+        <span class="label">Complete</span>
+      </div>
+    </div>
+    <div class="completion-info">
+      <h2>Overall Progress</h2>
+      <p>{{ completedCount }} of {{ totalCourses }} courses completed</p>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card in-progress">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div class="stat-content">
+        <span class="stat-value">{{ inProgressCount }}</span>
+        <span class="stat-label">In Progress</span>
+      </div>
+    </div>
+
+    <div class="stat-card completed">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      <div class="stat-content">
+        <span class="stat-value">{{ completedCount }}</span>
+        <span class="stat-label">Completed</span>
+      </div>
+    </div>
+
+    <div class="stat-card quizzes">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <div class="stat-content">
+        <span class="stat-value">{{ quizzesPassed }}/{{ quizzesPassed + quizzesFailed }}</span>
+        <span class="stat-label">Quizzes Passed</span>
+      </div>
+    </div>
+
+    @if (averageQuizScore > 0) {
+      <div class="stat-card average">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <span class="stat-value">{{ averageQuizScore }}%</span>
+          <span class="stat-label">Avg Quiz Score</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>
