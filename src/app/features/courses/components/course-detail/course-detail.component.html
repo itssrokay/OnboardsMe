@@ -79,19 +79,51 @@
         <!-- Action Buttons -->
         <div class="header-actions">
           @if (isEnrolled()) {
-            <button class="btn btn-primary btn-large" (click)="startLearning()">
-              @if (courseProgress() > 0) {
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-                Continue Learning
-              } @else {
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-                Start Learning
+            <div class="actions-row">
+              <button class="btn btn-primary btn-large" (click)="startLearning()">
+                @if (courseProgress() > 0) {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                  Continue Learning
+                } @else {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                  Start Learning
+                }
+              </button>
+              
+              @if (hasQuiz()) {
+                @if (canTakeQuiz()) {
+                  @if (hasPassedQuiz()) {
+                    <button class="btn btn-success btn-large" (click)="viewQuizResults()">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                      </svg>
+                      Quiz Passed ✓
+                    </button>
+                  } @else {
+                    <button class="btn btn-quiz btn-large" (click)="takeQuiz()">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"/>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                      </svg>
+                      Take Quiz
+                    </button>
+                  }
+                } @else {
+                  <button class="btn btn-secondary btn-large" disabled title="Complete all lessons to unlock quiz">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    Quiz Locked
+                  </button>
+                }
               }
-            </button>
+            </div>
             
             <!-- Progress indicator -->
             <div class="progress-indicator">

@@ -4,6 +4,9 @@
     <div class="header-content">
       <h1>Course Catalog</h1>
       <p class="subtitle">Explore and learn from our curated courses</p>
+      @if (userRole()) {
+        <p class="role-badge">Showing courses for: <strong>{{ userRole() }}</strong></p>
+      }
     </div>
     
     <!-- Search Bar -->

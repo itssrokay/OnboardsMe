@@ -45,9 +45,13 @@ export class HomeComponent implements OnInit {
       .slice(0, 6);
   });
 
-  // Recently Added - sorted by addedDate
+  // Recently Added - sorted by addedDate, filtered by user's role
   recentlyAdded = computed<Course[]>(() => {
+    const enrollment = this.enrollmentData();
+    if (!enrollment) return [];
+
     return [...this.courseService.courses()]
+      .filter(course => course.roles.includes(enrollment.role))
       .sort((a, b) => new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime())
       .slice(0, 6);
   });

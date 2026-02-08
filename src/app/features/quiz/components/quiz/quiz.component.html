@@ -1,0 +1,174 @@
+<div class="quiz-container">
+  @if (loading()) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading quiz...</p>
+    </div>
+  } @else if (error()) {
+    <div class="error-state">
+      <div class="error-icon">⚠️</div>
+      <h2>Cannot Access Quiz</h2>
+      <p>{{ error() }}</p>
+      <button class="btn btn-primary" (click)="router.navigate(['/courses', courseId()])">
+        Back to Course
+      </button>
+    </div>
+  } @else {
+    @if (quiz(); as quizData) {
+      <div class="quiz-wrapper">
+        <!-- Header -->
+        <div class="quiz-header">
+          <div class="header-content">
+            <h1>{{ quizData.title }}</h1>
+            <p class="description">{{ quizData.description }}</p>
+          </div>
+          <div class="quiz-meta">
+            <div class="meta-item">
+              <span class="label">Questions:</span>
+              <span class="value">{{ totalQuestions() }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="label">Passing Score:</span>
+              <span class="value">{{ quizData.passingScore }}%</span>
+            </div>
+            @if (quizData.timeLimit) {
+              <div class="meta-item" [class.time-warning]="timeRemaining() && timeRemaining()! < 300">
+                <span class="label">Time:</span>
+                <span class="value">{{ formatTime(elapsedTime()) }} / {{ quizData.timeLimit }} min</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-section">
+          <div class="progress-info">
+            <span>Question {{ currentQuestionIndex() + 1 }} of {{ totalQuestions() }}</span>
+            <span>{{ getAnsweredCount() }} answered</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="progress()"></div>
+          </div>
+        </div>
+
+        <!-- Question -->
+        @if (currentQuestion(); as question) {
+          <form [formGroup]="quizForm" class="quiz-form">
+            <div class="question-card">
+              <div class="question-header">
+                <span class="question-number">Question {{ getQuestionNumber(currentQuestionIndex()) }}</span>
+                <span class="question-points">{{ question.points }} points</span>
+              </div>
+              
+              <h2 class="question-text">{{ question.question }}</h2>
+              
+              <div class="answers-section">
+                @if (question.type === 'single-choice') {
+                  <div class="answer-options">
+                    @for (option of question.options; track $index) {
+                      <div 
+                        class="answer-option"
+                        [class.selected]="isAnswerSelected(currentQuestionIndex(), $index)"
+                        (click)="selectAnswer(currentQuestionIndex(), $index)">
+                        <div class="option-indicator">
+                          <span class="option-letter">{{ getOptionLetter($index) }}</span>
+                        </div>
+                        <span class="option-text">{{ option }}</span>
+                      </div>
+                    }
+                  </div>
+                } @else if (question.type === 'true-false') {
+                  <div class="true-false-options">
+                    <div 
+                      class="tf-option"
+                      [class.selected]="isAnswerSelected(currentQuestionIndex(), 'true')"
+                      (click)="selectAnswer(currentQuestionIndex(), 'true')">
+                      <div class="tf-icon">✓</div>
+                      <span>True</span>
+                    </div>
+                    <div 
+                      class="tf-option"
+                      [class.selected]="isAnswerSelected(currentQuestionIndex(), 'false')"
+                      (click)="selectAnswer(currentQuestionIndex(), 'false')">
+                      <div class="tf-icon">✗</div>
+                      <span>False</span>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation-section">
+              <button 
+                type="button"
+                class="btn btn-secondary"
+                [disabled]="isFirstQuestion()"
+                (click)="previousQuestion()">
+                ← Previous
+              </button>
+              
+              <div class="nav-dots">
+                @for (q of quizData.questions; track q.id; let i = $index) {
+                  <button
+                    type="button"
+                    class="nav-dot"
+                    [class.active]="i === currentQuestionIndex()"
+                    [class.answered]="isQuestionAnswered(i)"
+                    (click)="goToQuestion(i)"
+                    [title]="'Question ' + (i + 1)">
+                    {{ i + 1 }}
+                  </button>
+                }
+              </div>
+              
+              @if (!isLastQuestion()) {
+                <button 
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="nextQuestion()">
+                  Next →
+                </button>
+              } @else {
+                <button 
+                  type="button"
+                  class="btn btn-success"
+                  [disabled]="!canSubmit()"
+                  (click)="requestSubmit()">
+                  Submit Quiz
+                </button>
+              }
+            </div>
+          </form>
+        }
+
+        <!-- Exit Button -->
+        <button class="exit-btn" (click)="exitQuiz()">
+          Exit Quiz
+        </button>
+
+        <!-- Confirmation Dialog -->
+        @if (showConfirmDialog()) {
+          <div class="modal-overlay" (click)="cancelSubmit()">
+            <div class="modal-dialog" (click)="$event.stopPropagation()">
+              <h3>Submit Quiz?</h3>
+              <p>
+                You have answered <strong>{{ getAnsweredCount() }}</strong> out of 
+                <strong>{{ totalQuestions() }}</strong> questions.
+              </p>
+              <p>Are you sure you want to submit your quiz?</p>
+              <div class="modal-actions">
+                <button class="btn btn-secondary" (click)="cancelSubmit()">
+                  Cancel
+                </button>
+                <button class="btn btn-success" (click)="confirmSubmit()">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

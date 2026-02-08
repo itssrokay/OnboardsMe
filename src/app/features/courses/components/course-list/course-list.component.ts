@@ -27,15 +27,22 @@ export class CourseListComponent {
   userRole = computed(() => this.storageService.enrollmentData()?.role);
   userName = computed(() => this.storageService.enrollmentData()?.name);
   
-  // Course lists
-  allCourses = computed(() => this.courseService.courses());
+  // Course lists - all filtered by user's role
+  allCourses = computed(() => {
+    const role = this.userRole();
+    const courses = this.courseService.courses();
+    return role ? courses.filter(course => course.roles.includes(role)) : courses;
+  });
   
   enrolledCourses = computed(() => {
-    return this.courseService.enrolledCourses().map(course => ({
-      ...course,
-      progress: this.progressService.getCourseCompletionPercentage(course.id),
-      isEnrolled: true
-    }));
+    const role = this.userRole();
+    return this.courseService.enrolledCourses()
+      .filter(course => !role || course.roles.includes(role))
+      .map(course => ({
+        ...course,
+        progress: this.progressService.getCourseCompletionPercentage(course.id),
+        isEnrolled: true
+      }));
   });
   
   availableCourses = computed(() => {

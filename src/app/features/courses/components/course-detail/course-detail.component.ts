@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../../../../core/services/course.service';
 import { ProgressService } from '../../../../core/services/progress.service';
+import { QuizService } from '../../../../core/services/quiz.service';
 import { Course, Lesson } from '../../../../core/models/course.model';
 
 @Component({
@@ -17,6 +18,7 @@ export class CourseDetailComponent implements OnInit {
   private router = inject(Router);
   private courseService = inject(CourseService);
   private progressService = inject(ProgressService);
+  private quizService = inject(QuizService);
   
   courseId = signal<string>('');
   course = signal<Course | null>(null);
@@ -42,6 +44,23 @@ export class CourseDetailComponent implements OnInit {
   totalItems = computed(() => {
     const id = this.courseId();
     return id ? this.courseService.getTotalItemsInCourse(id) : 0;
+  });
+  
+  // Quiz availability
+  hasQuiz = computed(() => {
+    const id = this.courseId();
+    return id ? this.quizService.getQuizByCourseId(id) !== null : false;
+  });
+  
+  canTakeQuiz = computed(() => {
+    return this.hasQuiz() && this.courseProgress() === 100;
+  });
+  
+  hasPassedQuiz = computed(() => {
+    const id = this.courseId();
+    if (!id) return false;
+    const quiz = this.quizService.getQuizByCourseId(id);
+    return quiz ? this.quizService.hasPassedQuiz(quiz.id) : false;
   });
   
   // Expanded lessons tracking
@@ -175,5 +194,13 @@ export class CourseDetailComponent implements OnInit {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+  }
+  
+  takeQuiz(): void {
+    this.router.navigate(['/courses', this.courseId(), 'quiz']);
+  }
+  
+  viewQuizResults(): void {
+    this.router.navigate(['/courses', this.courseId(), 'quiz', 'result']);
   }
 }

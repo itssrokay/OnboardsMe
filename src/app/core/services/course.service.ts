@@ -99,6 +99,13 @@ export class CourseService {
   }
   
   /**
+   * Get all courses
+   */
+  getAllCourses(): Course[] {
+    return this.courses();
+  }
+  
+  /**
    * Get a single course by ID
    */
   getCourseById(courseId: string): Course | undefined {

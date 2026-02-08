@@ -23,7 +23,21 @@
     
     .subtitle {
       color: #64748b;
-      margin: 0;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+
+      strong {
+        font-weight: 600;
+      }
     }
   }
 }

@@ -1,0 +1,170 @@
+<div class="result-container">
+  @if (result(); as result) {
+    <div class="result-wrapper">
+      <!-- Result Header -->
+      <div class="result-header" [class.passed]="passed()" [class.failed]="!passed()">
+        <div class="result-icon">
+          @if (passed()) {
+            <div class="success-icon">🎉</div>
+          } @else {
+            <div class="fail-icon">📚</div>
+          }
+        </div>
+        
+        <h1>
+          @if (passed()) {
+            Congratulations!
+          } @else {
+            Keep Learning!
+          }
+        </h1>
+        
+        <p class="result-message">
+          @if (passed()) {
+            You've successfully passed the quiz!
+          } @else {
+            You need {{ result.passingScore }}% to pass. Keep practicing and try again!
+          }
+        </p>
+      </div>
+
+      <!-- Score Card -->
+      <div class="score-card">
+        <div class="score-circle">
+          <svg viewBox="0 0 120 120" class="progress-ring">
+            <circle
+              cx="60"
+              cy="60"
+              r="54"
+              fill="none"
+              stroke="#e2e8f0"
+              stroke-width="12"
+            />
+            <circle
+              cx="60"
+              cy="60"
+              r="54"
+              fill="none"
+              [attr.stroke]="scoreColor()"
+              stroke-width="12"
+              stroke-linecap="round"
+              [style.stroke-dasharray]="340"
+              [style.stroke-dashoffset]="340 - (340 * scorePercentage() / 100)"
+              transform="rotate(-90 60 60)"
+            />
+          </svg>
+          <div class="score-text">
+            <span class="score-value">{{ scorePercentage() }}%</span>
+            <span class="score-label">Score</span>
+          </div>
+        </div>
+        
+        <div class="score-details">
+          <div class="detail-item">
+            <span class="detail-label">Total Questions</span>
+            <span class="detail-value">{{ result.totalQuestions }}</span>
+          </div>
+          <div class="detail-item success">
+            <span class="detail-label">Correct</span>
+            <span class="detail-value">{{ result.correctAnswers }}</span>
+          </div>
+          <div class="detail-item error">
+            <span class="detail-label">Wrong</span>
+            <span class="detail-value">{{ result.wrongAnswers }}</span>
+          </div>
+          @if (result.timeTaken) {
+            <div class="detail-item">
+              <span class="detail-label">Time Taken</span>
+              <span class="detail-value">{{ result.timeTaken ? formatTimeTaken(result.timeTaken) : 'N/A' }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="action-buttons">
+        <button class="btn btn-secondary" (click)="backToCourse()">
+          Back to Course
+        </button>
+        
+        @if (!passed()) {
+          <button class="btn btn-primary" (click)="retakeQuiz()">
+            Retake Quiz
+          </button>
+        } @else {
+          <button class="btn btn-primary" (click)="continueToCourses()">
+            Continue Learning
+          </button>
+        }
+      </div>
+
+      <!-- Toggle Answers -->
+      <div class="answers-toggle">
+        <button class="toggle-btn" (click)="toggleAnswers()">
+          @if (showAnswers()) {
+            Hide Answers
+          } @else {
+            Show Detailed Answers
+          }
+        </button>
+      </div>
+
+      <!-- Detailed Answers -->
+      @if (showAnswers()) {
+        <div class="answers-section">
+          <h2>Detailed Answers</h2>
+          
+          @for (qResult of result.questionResults; track qResult.questionId; let i = $index) {
+            <div class="answer-card" [class.correct]="qResult.isCorrect" [class.incorrect]="!qResult.isCorrect">
+              <div class="answer-header">
+                <span class="question-number">Question {{ i + 1 }}</span>
+                <span class="points-earned">
+                  {{ qResult.earnedPoints }} / {{ qResult.points }} points
+                </span>
+                <span class="result-badge" [class.correct]="qResult.isCorrect">
+                  @if (qResult.isCorrect) {
+                    ✓ Correct
+                  } @else {
+                    ✗ Incorrect
+                  }
+                </span>
+              </div>
+              
+              <h3 class="question">{{ qResult.question }}</h3>
+              
+              <div class="answer-comparison">
+                <div class="answer-item">
+                  <span class="answer-label">Your Answer:</span>
+                  <span class="answer-value" [class.wrong]="!qResult.isCorrect">
+                    {{ formatAnswer(qResult.userAnswer) }}
+                  </span>
+                </div>
+                
+                @if (!qResult.isCorrect) {
+                  <div class="answer-item">
+                    <span class="answer-label">Correct Answer:</span>
+                    <span class="answer-value correct">
+                      {{ formatAnswer(qResult.correctAnswer) }}
+                    </span>
+                  </div>
+                }
+              </div>
+              
+              @if (qResult.explanation) {
+                <div class="explanation">
+                  <strong>Explanation:</strong>
+                  <p>{{ qResult.explanation }}</p>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading results...</p>
+    </div>
+  }
+</div>

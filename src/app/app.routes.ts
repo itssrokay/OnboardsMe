@@ -11,17 +11,27 @@ export const routes: Routes = [
   // Enrollment routes
   {
     path: 'enroll',
-    loadComponent: () => import('./features/enrollment/components/enrollment-form/enrollment-form.component').then(m => m.EnrollmentFormComponent),
-    canActivate: [enrollmentGuard]
+    loadComponent: () => import('./features/enrollment/components/enrollment-form/enrollment-form.component').then(m => m.EnrollmentFormComponent)
   },
   {
     path: 'enroll/select-courses',
-    loadComponent: () => import('./features/enrollment/components/course-selection/course-selection.component').then(m => m.CourseSelectionComponent),
-    canActivate: [enrollmentGuard]
+    loadComponent: () => import('./features/enrollment/components/course-selection/course-selection.component').then(m => m.CourseSelectionComponent)
   },
   // Home route
   {
     path: 'home',
+    loadComponent: () => import('./features/home/components/home/home.component').then(m => m.HomeComponent),
+    canActivate: [enrollmentGuard]
+  },
+  // Quizzes route
+  {
+    path: 'quizzes',
+    loadComponent: () => import('./features/quiz/components/quiz-list/quiz-list.component').then(m => m.QuizListComponent),
+    canActivate: [enrollmentGuard]
+  },
+  // Dashboard route (placeholder for now)
+  {
+    path: 'dashboard',
     loadComponent: () => import('./features/home/components/home/home.component').then(m => m.HomeComponent),
     canActivate: [enrollmentGuard]
   },
@@ -43,6 +53,14 @@ export const routes: Routes = [
         path: ':courseId/lesson/:lessonId',
         loadComponent: () => import('./features/courses/components/lesson-viewer/lesson-viewer.component').then(m => m.LessonViewerComponent),
         canActivate: [lessonAccessGuard]
+      },
+      {
+        path: ':courseId/quiz',
+        loadComponent: () => import('./features/quiz/components/quiz/quiz.component').then(m => m.QuizComponent)
+      },
+      {
+        path: ':courseId/quiz/result',
+        loadComponent: () => import('./features/quiz/components/quiz-result/quiz-result.component').then(m => m.QuizResultComponent)
       }
     ]
   },
