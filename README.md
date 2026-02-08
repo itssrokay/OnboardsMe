@@ -1,59 +1,86 @@
-# OnboardsMe
+# OnboardsMe - Employee Onboarding Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+A modern Angular-based onboarding platform for new employees with role-based learning paths, interactive courses, and progress tracking.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+- **Role-Based Learning**: Customized course recommendations based on user role (Developer/PDA)
+- **Experience-Based Suggestions**: Courses grouped by technology and filtered by experience level
+- **Interactive Quizzes**: 5+ quizzes per course with instant feedback
+- **Progress Dashboard**: Track completion percentage, quiz scores, and learning progress
+- **Course Timeline**: Visual timeline showing enrollment, course completion, and achievements
+- **Onboarding Portal**: Welcome videos, manager messages, and mentorship contacts
+- **See More Functionality**: Clean UI with expandable course sections
 
-```bash
-ng serve
-```
+## 🛠️ Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Angular 19** - Standalone components architecture
+- **TypeScript 5.7**
+- **Angular Signals** - For reactive state management
+- **RxJS** - For async operations
+- **SCSS** - Modern styling with responsive design
+- **GitHub Pages** - Deployment
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## 📦 Installation
 
 ```bash
-ng build
+# Install dependencies
+npm install
+
+# Run development server
+npm start
+
+# Build for production
+npm run build:prod
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🏗️ Project Structure
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```
+src/app/
+├── core/
+│   ├── guards/          # Route guards (enrollment, course access)
+│   ├── models/          # TypeScript interfaces
+│   ├── services/        # Business logic services
+│   └── header.component # Global navigation header
+├── features/
+│   ├── courses/         # Course browsing and learning
+│   ├── dashboard/       # Progress tracking
+│   ├── enrollment/      # User enrollment and course selection
+│   ├── home/            # Home dashboard
+│   ├── onboarding/      # Welcome and orientation
+│   ├── quiz/            # Quiz and assessments
+│   └── timeline/        # Learning journey timeline
+└── assets/
+    └── config/          # JSON configuration files
 ```
 
-## Running end-to-end tests
+## 🔑 Key Architectural Decisions
 
-For end-to-end (e2e) testing, run:
+- **Standalone Components**: Modern Angular architecture, no NgModules
+- **Signals for State**: Reactive state management without external libraries
+- **Configuration-Driven UI**: Forms, courses, and quizzes defined in JSON
+- **Feature-Based Structure**: Each feature is self-contained
+- **Smart/Presentational Pattern**: Separation of business logic and UI
 
-```bash
-ng e2e
-```
+## 📊 Deployment
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Deployed at: [https://itssrokay.github.io/OnboardsMe/](https://itssrokay.github.io/OnboardsMe/)
 
-## Additional Resources
+The app uses GitHub Pages with automatic deployment via `angular-cli-ghpages`.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🎯 Key Highlights
+
+- **12 Courses** across Angular, Java, Python, and Computer Fundamentals
+- **60+ Quiz Questions** with detailed explanations
+- **Role-Based Filtering** throughout the platform
+- **Experience-Based Recommendations** for personalized learning paths
+- **Clean, Modern UI** with responsive design
+- **Optimized Bundle Size**: ~314KB initial, ~87KB gzipped
+
+## 📝 License
+
+This project is for educational purposes.
