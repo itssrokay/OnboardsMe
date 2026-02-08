@@ -1,0 +1,241 @@
+.timeline-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+
+  &.clickable {
+    .timeline-card {
+      cursor: pointer;
+      
+      &:hover {
+        transform: translateX(4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        border-color: #667eea;
+
+        .view-link {
+          color: #667eea;
+        }
+      }
+    }
+  }
+
+  &.first {
+    .timeline-icon {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+
+  .timeline-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: white;
+    border: 3px solid;
+    position: relative;
+    z-index: 2;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    &.icon-enrollment {
+      border-color: #667eea;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+      svg {
+        color: white;
+      }
+    }
+
+    &.icon-start {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+
+      svg {
+        color: white;
+      }
+    }
+
+    &.icon-complete {
+      border-color: #10b981;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+
+      svg {
+        color: white;
+      }
+    }
+
+    &.icon-quiz {
+      border-color: #f59e0b;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  .timeline-content {
+    flex: 1;
+  }
+
+  .timeline-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    transition: all 0.3s;
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+
+      h3 {
+        margin: 0;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1a202c;
+        line-height: 1.4;
+        flex: 1;
+      }
+
+      .score-badge {
+        padding: 0.25rem 0.75rem;
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        color: white;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+    }
+
+    .card-description {
+      margin: 0 0 1rem 0;
+      color: #718096;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+
+      .date-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+
+        .date-line {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .date {
+            color: #1a202c;
+            font-weight: 600;
+          }
+
+          .time {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.8125rem;
+          }
+        }
+
+        .relative-time {
+          color: #718096;
+          font-size: 0.75rem;
+        }
+      }
+
+      .view-link {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: #667eea;
+        font-size: 0.875rem;
+        font-weight: 600;
+        transition: color 0.2s;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  // Event-specific styling
+  &.event-enrollment {
+    .timeline-card {
+      border-color: #667eea;
+      background: linear-gradient(to right, rgba(102, 126, 234, 0.05), white);
+    }
+  }
+
+  &.event-course-complete {
+    .timeline-card {
+      border-color: #10b981;
+    }
+  }
+
+  &.event-quiz-passed {
+    .timeline-card {
+      border-color: #f59e0b;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    gap: 1rem;
+
+    .timeline-icon {
+      width: 48px;
+      height: 48px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .timeline-card {
+      padding: 1rem;
+
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  }
+}

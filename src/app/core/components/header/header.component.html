@@ -46,16 +46,69 @@
         </svg>
         <span>Dashboard</span>
       </a>
+      
+      <a routerLink="/timeline" routerLinkActive="active" class="nav-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Timeline</span>
+      </a>
     </nav>
 
     <!-- User Profile -->
     @if (isEnrolled()) {
-      <div class="user-profile">
-        <div class="user-avatar">{{ getUserInitials() }}</div>
-        <div class="user-info">
-          <span class="user-name">{{ enrollmentData()?.name }}</span>
-          <span class="user-role">{{ enrollmentData()?.role }}</span>
+      <div class="user-profile-wrapper" (click)="$event.stopPropagation()">
+        <div class="user-profile" (click)="toggleUserMenu()">
+          <div class="user-avatar">{{ getUserInitials() }}</div>
+          <div class="user-info">
+            <span class="user-name">{{ enrollmentData()?.name }}</span>
+            <span class="user-role">{{ enrollmentData()?.role }}</span>
+          </div>
+          <svg class="dropdown-icon" [class.open]="userMenuOpen()" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
         </div>
+
+        <!-- User Dropdown Menu -->
+        @if (userMenuOpen()) {
+          <div class="user-dropdown" (click)="$event.stopPropagation()">
+            <!-- User Info Section -->
+            <div class="dropdown-section user-info-section">
+              <div class="user-details">
+                <div class="user-avatar-large">{{ getUserInitials() }}</div>
+                <div class="user-text">
+                  <span class="user-name-large">{{ enrollmentData()?.name }}</span>
+                  <span class="user-role-badge">{{ enrollmentData()?.role }}</span>
+                  <span class="user-email">{{ enrollmentData()?.email }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <!-- Reset Progress Section -->
+            <div class="dropdown-section">
+              <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                <span>Reset Everything</span>
+              </div>
+              <div class="section-content">
+                <p class="warning-text">Start over from enrollment (choose role again)</p>
+                <button class="menu-button danger" (click)="openResetConfirm()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"/>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                  </svg>
+                  <span>Reset & Re-enroll</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        }
       </div>
     }
 
@@ -110,6 +163,64 @@
         </svg>
         <span>Dashboard</span>
       </a>
+      
+      <a routerLink="/timeline" routerLinkActive="active" class="mobile-nav-link" (click)="closeMobileMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Timeline</span>
+      </a>
     </div>
   }
 </header>
+
+<!-- Reset Progress Confirmation Modal -->
+@if (showResetConfirm()) {
+  <div class="modal-overlay" (click)="cancelReset()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header danger">
+        <h2>Reset Everything?</h2>
+        <button class="close-button" (click)="cancelReset()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="danger-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <p class="danger-text">This action <strong>cannot be undone</strong>. Your complete enrollment and all progress will be permanently deleted.</p>
+        <div class="warning-box danger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <div class="warning-content">
+            <p><strong>What will be deleted:</strong></p>
+            <ul>
+              <li>Your enrollment profile (name, email, role)</li>
+              <li>All selected courses</li>
+              <li>All course progress and completion status</li>
+              <li>All quiz attempts and scores</li>
+              <li>Complete timeline history</li>
+            </ul>
+            <p style="margin-top: 0.75rem;"><strong>After reset:</strong> You'll start from scratch - re-enter your details, choose your role, and select courses.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="cancelReset()">Cancel</button>
+        <button class="btn btn-danger" (click)="confirmReset()">Yes, Reset Everything</button>
+      </div>
+    </div>
+  </div>
+}
+

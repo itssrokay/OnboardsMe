@@ -35,6 +35,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/dashboard/components/dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [enrollmentGuard]
   },
+  // Timeline route
+  {
+    path: 'timeline',
+    loadComponent: () => import('./features/timeline/components/timeline/timeline.component').then(m => m.TimelineComponent),
+    canActivate: [enrollmentGuard]
+  },
   // Course routes
   {
     path: 'courses',

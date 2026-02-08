@@ -1,0 +1,105 @@
+<div class="timeline-container">
+  @if (loading()) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading your timeline...</p>
+    </div>
+  } @else {
+    <!-- Timeline Header -->
+    <div class="timeline-header">
+      <div class="header-text">
+        <h1>Your Learning Journey</h1>
+        <p class="subtitle">A chronological view of your progress and achievements</p>
+        @if (userRole()) {
+          <p class="role-badge">{{ userRole() }}</p>
+        }
+      </div>
+    </div>
+
+    <!-- Timeline Stats -->
+    <div class="timeline-stats">
+      <div class="stat-card primary">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <span class="stat-value">{{ daysSinceEnrollment() }}</span>
+          <span class="stat-label">Days of Learning</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <span class="stat-value">{{ coursesStarted() }}</span>
+          <span class="stat-label">Courses Started</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <span class="stat-value">{{ coursesCompleted() }}</span>
+          <span class="stat-label">Courses Completed</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <span class="stat-value">{{ quizzesPassed() }}</span>
+          <span class="stat-label">Quizzes Passed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline Events -->
+    @if (timelineEvents().length > 0) {
+      <div class="timeline-content">
+        <div class="timeline-line"></div>
+        <div class="timeline-events">
+          @for (event of timelineEvents(); track event.id; let first = $first; let last = $last) {
+            <app-timeline-item
+              [event]="event"
+              [formattedDate]="formatDate(event.date)"
+              [formattedTime]="formatTime(event.date)"
+              [relativeTime]="formatRelativeTime(event.date)"
+              [isFirst]="first"
+              [isLast]="last"
+              (eventClick)="navigateToCourse($event.courseId)"
+            />
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <h3>Your Journey Begins</h3>
+        <p>Start taking courses to see your learning timeline</p>
+        <button class="btn-primary" (click)="router.navigate(['/courses'])">
+          Browse Courses
+        </button>
+      </div>
+    }
+  }
+</div>

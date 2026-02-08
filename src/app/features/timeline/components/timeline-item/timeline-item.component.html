@@ -1,0 +1,61 @@
+<div 
+  class="timeline-item" 
+  [class]="getEventTypeClass()"
+  [class.clickable]="isClickable()"
+  [class.first]="isFirst"
+  [class.last]="isLast"
+  (click)="onEventClick()"
+>
+  <!-- Timeline Icon -->
+  <div class="timeline-icon" [class]="getIconClass()">
+    @if (event.icon === 'enrollment') {
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+    } @else if (event.icon === 'start') {
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+    } @else if (event.icon === 'complete') {
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+    } @else if (event.icon === 'quiz') {
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    }
+  </div>
+
+  <!-- Timeline Content -->
+  <div class="timeline-content">
+    <div class="timeline-card">
+      <div class="card-header">
+        <h3>{{ event.title }}</h3>
+        @if (event.score !== undefined) {
+          <span class="score-badge">{{ event.score }}%</span>
+        }
+      </div>
+      <p class="card-description">{{ event.description }}</p>
+      <div class="card-footer">
+        <div class="date-info">
+          <div class="date-line">
+            <span class="date">{{ formattedDate }}</span>
+            <span class="time">{{ formattedTime }}</span>
+          </div>
+          <span class="relative-time">{{ relativeTime }}</span>
+        </div>
+        @if (isClickable()) {
+          <div class="view-link">
+            <span>View Course</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
