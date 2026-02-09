@@ -11,19 +11,12 @@
         <h1 class="page-title">Onboarding</h1>
       </div>
       <div class="header-right">
-        <div class="search-container">
-          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.35-4.35"/>
+        <button class="start-learning-header-btn" (click)="router.navigate(['/home'])">
+          <span>Start Learning</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
           </svg>
-          <input 
-            type="text" 
-            class="search-input" 
-            placeholder="Search"
-            (input)="onSearch($event)"
-            [value]="searchQuery()"
-          />
-        </div>
+        </button>
       </div>
     </div>
   </div>
