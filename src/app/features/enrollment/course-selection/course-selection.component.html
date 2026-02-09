@@ -9,7 +9,7 @@
         class="proceed-button-top"
         [disabled]="!canProceed()"
         (click)="proceed()">
-        Continue
+        Continue to Onboarding
         @if (selectedCourses().size > 0) {
           <span class="selection-count">({{ selectedCourses().size }})</span>
         }
@@ -58,23 +58,23 @@
           </div>
         }
         
-        <!-- Continue Button as last card -->
-        <div class="course-card continue-card">
-          <div class="continue-content">
-            <div class="continue-icon">
+        <div class="continue-card">
+          <button 
+            class="proceed-button-card"
+            [disabled]="!canProceed()"
+            (click)="proceed()">
+            <div class="button-content">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"/>
               </svg>
+              <div class="button-text">
+                <span class="main-text">Continue to Onboarding</span>
+                @if (selectedCourses().size > 0) {
+                  <span class="sub-text">{{ selectedCourses().size }} course{{ selectedCourses().size === 1 ? '' : 's' }} selected</span>
+                }
+              </div>
             </div>
-            <h3>Ready to Start?</h3>
-            <p>You've selected {{ selectedCourses().size }} course{{ selectedCourses().size === 1 ? '' : 's' }}</p>
-            <button 
-              class="proceed-button"
-              [disabled]="!canProceed()"
-              (click)="proceed()">
-              Continue to Onboarding
-            </button>
-          </div>
+          </button>
         </div>
       </div>
     }
