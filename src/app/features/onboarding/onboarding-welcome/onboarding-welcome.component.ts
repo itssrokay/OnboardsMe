@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -37,12 +37,16 @@ interface Manager {
   templateUrl: './onboarding-welcome.component.html',
   styleUrl: './onboarding-welcome.component.scss'
 })
-export class OnboardingWelcomeComponent {
+export class OnboardingWelcomeComponent implements OnInit {
   router = inject(Router);
   private sanitizer = inject(DomSanitizer);
 
   searchQuery = signal('');
   selectedVideo = signal<VideoCard | null>(null);
+
+  ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
 
   // Manager data
   manager: Manager = {
