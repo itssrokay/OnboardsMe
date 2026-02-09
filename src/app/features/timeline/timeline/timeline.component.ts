@@ -9,7 +9,7 @@ import { TimelineItemComponent } from '../timeline-item/timeline-item.component'
 
 export interface TimelineEvent {
   id: string;
-  type: 'enrollment' | 'course-start' | 'course-complete' | 'quiz-passed';
+  type: 'enrollment' | 'course-start' | 'course-complete' | 'quiz-passed' | 'quiz-failed';
   title: string;
   description: string;
   date: string;
@@ -17,7 +17,7 @@ export interface TimelineEvent {
   courseId?: string;
   courseName?: string;
   score?: number;
-  icon: 'enrollment' | 'start' | 'complete' | 'quiz';
+  icon: 'enrollment' | 'start' | 'complete' | 'quiz' | 'quiz-failed';
 }
 
 /**
@@ -108,35 +108,33 @@ export class TimelineComponent implements OnInit {
       }
     });
     
-    // 3. Quiz Events (only passed quizzes)
+    // 3. Quiz Events (all attempts - passed and failed)
     courses.forEach(course => {
       const quiz = this.quizService.getQuizByCourseId(course.id);
       if (quiz) {
         const attempts = this.quizService.getAllAttempts(quiz.id);
         
-        // Find the first passing attempt
-        const passingAttempt = attempts.find(attempt => 
-          attempt.score >= quiz.passingScore && attempt.completedAt
-        );
-        
-        if (passingAttempt && passingAttempt.completedAt) {
-          // Calculate correct answers
-          const totalQuestions = quiz.questions.length;
-          const correctAnswers = Math.round((passingAttempt.score / 100) * totalQuestions);
-          
-          events.push({
-            id: `quiz-passed-${course.id}`,
-            type: 'quiz-passed',
-            title: `Passed "${course.title}" Quiz`,
-            description: `Scored ${passingAttempt.score}% (${correctAnswers}/${totalQuestions} correct)`,
-            date: passingAttempt.completedAt,
-            timestamp: new Date(passingAttempt.completedAt).getTime(),
-            courseId: course.id,
-            courseName: course.title,
-            score: passingAttempt.score,
-            icon: 'quiz'
-          });
-        }
+        // Show all quiz attempts
+        attempts.forEach((attempt, index) => {
+          if (attempt.completedAt) {
+            const totalQuestions = quiz.questions.length;
+            const correctAnswers = Math.round((attempt.score / 100) * totalQuestions);
+            const passed = attempt.score >= quiz.passingScore;
+            
+            events.push({
+              id: `quiz-${course.id}-${index}`,
+              type: passed ? 'quiz-passed' : 'quiz-failed',
+              title: passed ? `Passed "${course.title}" Quiz` : `Attempted "${course.title}" Quiz`,
+              description: `Scored ${attempt.score}% (${correctAnswers}/${totalQuestions} correct)${passed ? ' ✓' : ' - Need ' + quiz.passingScore + '% to pass'}`,
+              date: attempt.completedAt,
+              timestamp: new Date(attempt.completedAt).getTime(),
+              courseId: course.id,
+              courseName: course.title,
+              score: attempt.score,
+              icon: passed ? 'quiz' : 'quiz-failed'
+            });
+          }
+        });
       }
     });
     

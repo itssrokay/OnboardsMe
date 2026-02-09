@@ -80,6 +80,15 @@
         color: white;
       }
     }
+
+    &.icon-quiz-failed {
+      border-color: #ef4444;
+      background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+
+      svg {
+        color: white;
+      }
+    }
   }
 
   .timeline-content {
