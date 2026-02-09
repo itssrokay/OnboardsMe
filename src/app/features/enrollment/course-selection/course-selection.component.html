@@ -1,7 +1,20 @@
 <div class="course-selection-container">
   <div class="course-selection-card">
-    <h1>Select Your Courses</h1>
-    <p class="subtitle">Select courses that interest you ({{ userExperience() }} {{ userExperience() === 1 ? 'year' : 'years' }} experience)</p>
+    <div class="header-section">
+      <div class="header-content">
+        <h1>Select Your Courses</h1>
+        <p class="subtitle">Select courses that interest you ({{ userExperience() }} {{ userExperience() === 1 ? 'year' : 'years' }} experience)</p>
+      </div>
+      <button 
+        class="proceed-button-top"
+        [disabled]="!canProceed()"
+        (click)="proceed()">
+        Continue
+        @if (selectedCourses().size > 0) {
+          <span class="selection-count">({{ selectedCourses().size }})</span>
+        }
+      </button>
+    </div>
 
     @if (error()) {
       <div class="error-message">{{ error() }}</div>
@@ -44,18 +57,25 @@
             </div>
           </div>
         }
-      </div>
-
-      <div class="actions">
-        <button 
-          class="proceed-button"
-          [disabled]="!canProceed()"
-          (click)="proceed()">
-          Continue to Home
-          @if (selectedCourses().size > 0) {
-            <span class="selection-count">({{ selectedCourses().size }} selected)</span>
-          }
-        </button>
+        
+        <!-- Continue Button as last card -->
+        <div class="course-card continue-card">
+          <div class="continue-content">
+            <div class="continue-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </div>
+            <h3>Ready to Start?</h3>
+            <p>You've selected {{ selectedCourses().size }} course{{ selectedCourses().size === 1 ? '' : 's' }}</p>
+            <button 
+              class="proceed-button"
+              [disabled]="!canProceed()"
+              (click)="proceed()">
+              Continue to Onboarding
+            </button>
+          </div>
+        </div>
       </div>
     }
   </div>
